@@ -30,7 +30,7 @@ const Package: React.FC = () => {
       icon: Gift,
       price: "No Cost",
       originalPrice: null,
-      description: "Upload your little ones photos and memories upto 3GP",
+      description: "Upload your little ones photos and memories upto 3GB",
       features: [
         "No shoots for this pack",
         "Unlimited Memories with compressed images",
@@ -221,7 +221,7 @@ const Package: React.FC = () => {
                         {pkg.originalPrice && (
                           <span
                             className="ml-2 font-medium text-base line-through"
-                            style={{ color: colors.greys }}
+                            style={{ color: colors.blue }}
                           >
                             {pkg.originalPrice}
                           </span>
@@ -262,7 +262,7 @@ const Package: React.FC = () => {
 
                     {/* CTA Button */}
                     <div className="flex justify-center mt-6">
-                      <Button to="/register" variant={pkg.tier} >
+                      <Button to="/register" variant={pkg.tier}>
                         Choose {pkg.name}
                       </Button>
                     </div>
@@ -294,7 +294,10 @@ const Package: React.FC = () => {
                 Let our experts help you choose the perfect package for your
                 precious memories!
               </p>
-              <Button href="mailto:admin@kuttystory.com">
+              <Button
+                href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages.
+"
+              >
                 Book Free Consultation
               </Button>
             </div>

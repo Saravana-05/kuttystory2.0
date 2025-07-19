@@ -22,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
     { name: "GALLERY", hash: "#gallery" },
     { name: "PACKAGE", hash: "#package" },
     { name: "FAQS", hash: "#faqs" },
+    { name: "STUDIO", href: "https://store.kuttystory.com/user/login" },
   ];
 
   const handleMenuToggle = () => {
@@ -83,30 +84,57 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
           {/* Desktop Navigation */}
           {isHomePage && (
             <nav className="hidden md:flex flex-wrap -space-x-2 justify-center items-center font-bold">
-              {navigationItems.map((item, index) => (
-                <Link
-                  key={item.name}
-                  to={item.hash}
-                  className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
-                    index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
-                  }`}
-                  style={{
-                    backgroundColor: colors.pinkdark,
-                    color: colors.purpledark,
-                    borderColor: colors.pinkdark,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = colors.purpledark;
-                    e.currentTarget.style.color = "#fff";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = colors.pinkdull;
-                    e.currentTarget.style.color = colors.purpledark;
-                  }}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigationItems.map((item, index) =>
+                item.hash ? (
+                  <Link
+                    key={item.name}
+                    to={item.hash}
+                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
+                      index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
+                    }`}
+                    style={{
+                      backgroundColor: colors.pinkdark,
+                      color: colors.purpledark,
+                      borderColor: colors.pinkdark,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = colors.purpledark;
+                      e.currentTarget.style.color = "#fff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = colors.pinkdull;
+                      e.currentTarget.style.color = colors.purpledark;
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
+                      index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
+                    }`}
+                    style={{
+                      backgroundColor: colors.pinkdark,
+                      color: colors.purpledark,
+                      borderColor: colors.pinkdark,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = colors.purpledark;
+                      e.currentTarget.style.color = "#fff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = colors.pinkdull;
+                      e.currentTarget.style.color = colors.purpledark;
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                )
+              )}
             </nav>
           )}
 
@@ -173,29 +201,54 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
           }}
         >
           <div className="flex flex-col gap-3 items-center">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.hash}
-                onClick={() => setIsMenuOpen(false)}
-                className="w-full max-w-xs text-center px-4 py-2 text-sm font-semibold rounded-full shadow-md transition duration-200"
-                style={{
-                  color: colors.lightmauve,
-                  backgroundColor: colors.cream,
-                  border: `1px solid ${colors.pinkmedium}`,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = colors.pinkdark;
-                  e.currentTarget.style.color = colors.purpledark;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = colors.cream;
-                  e.currentTarget.style.color = colors.mauve;
-                }}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigationItems.map((item) =>
+              item.hash ? (
+                <Link
+                  key={item.name}
+                  to={item.hash}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full max-w-xs text-center px-4 py-2 text-sm font-semibold rounded-full shadow-md transition duration-200"
+                  style={{
+                    color: colors.lightmauve,
+                    backgroundColor: colors.cream,
+                    border: `1px solid ${colors.pinkmedium}`,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = colors.pinkdark;
+                    e.currentTarget.style.color = colors.purpledark;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = colors.cream;
+                    e.currentTarget.style.color = colors.mauve;
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full max-w-xs text-center px-4 py-2 text-sm font-semibold rounded-full shadow-md transition duration-200"
+                  style={{
+                    color: colors.lightmauve,
+                    backgroundColor: colors.cream,
+                    border: `1px solid ${colors.pinkmedium}`,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = colors.pinkdark;
+                    e.currentTarget.style.color = colors.purpledark;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = colors.cream;
+                    e.currentTarget.style.color = colors.mauve;
+                  }}
+                >
+                  {item.name}
+                </a>
+              )
+            )}
           </div>
 
           <div className="flex justify-center gap-4 mt-6">

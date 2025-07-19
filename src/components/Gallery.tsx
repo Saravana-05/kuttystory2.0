@@ -127,7 +127,7 @@ const Gallery: React.FC = () => {
       }}
     >
       {/* <FloatingBackground /> */}
-      <div className="pb-1 pt-11 sm:pb-12 relative z-10">
+      <div className="pb-1 pt-8 sm:pb-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
