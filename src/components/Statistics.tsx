@@ -23,7 +23,7 @@ const Statistics: React.FC = () => {
 
   const finalCounts = {
     babies: 1000,
-    clients: 1200,
+    clients: 833,
     events: 50,
     countries: 6,
   };
@@ -67,6 +67,7 @@ const Statistics: React.FC = () => {
       accentIcon: <Star className="h-6 w-6" />,
       solidColor: colors.lightmauve,
       textColor: colors.pinkdark,
+      iconColor: colors.purpledark,
     },
     {
       icon: <Smile className="h-12 w-12" />,
@@ -75,6 +76,7 @@ const Statistics: React.FC = () => {
       accentIcon: <Users className="h-6 w-6" />,
       solidColor: colors.mauve,
       textColor: colors.pinkmedium,
+      iconColor: colors.blacks,
     },
     {
       icon: <Calendar className="h-12 w-12" />,
@@ -82,7 +84,8 @@ const Statistics: React.FC = () => {
       label: "EVENTS",
       accentIcon: <Award className="h-6 w-6" />,
       solidColor: colors.lightpurple,
-      textColor: colors.pinkmedium,
+      textColor: colors.pinkhome,
+      iconColor: colors.lightpurple,
     },
     {
       icon: <Globe className="h-12 w-12" />,
@@ -90,7 +93,8 @@ const Statistics: React.FC = () => {
       label: "COUNTRIES ACROSS",
       accentIcon: <TrendingUp className="h-6 w-6" />,
       solidColor: colors.purpledark,
-      textColor: colors.purpledark,
+      textColor: colors.lightmauve,
+      iconColor: colors.blue,
     },
   ];
 
@@ -191,9 +195,9 @@ const Statistics: React.FC = () => {
                 <div className="mb-6 flex justify-center">
                   <div
                     className="rounded-full p-4 shadow-lg group-hover:rotate-6 transition-transform duration-300"
-                    style={{ backgroundColor: colors.purpledark }}
+                    style={{ backgroundColor: stat.textColor }}
                   >
-                    <div style={{ color: colors.blue }}>{stat.icon}</div>
+                    <div style={{ color: colors.purpledark }}>{stat.icon}</div>
                   </div>
                 </div>
 

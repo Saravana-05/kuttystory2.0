@@ -40,7 +40,7 @@ const BabyStory: React.FC = () => {
   return (
     <section
       id="album"
-      className=" relative overflow-hidden"
+      className="py-20 relative overflow-hidden"
       style={{ backgroundColor: "rgba(249, 153, 183, 0.1)" }}
     >
       {/* Funky Background Elements
@@ -57,7 +57,7 @@ const BabyStory: React.FC = () => {
       </div> */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-2 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
             <h2

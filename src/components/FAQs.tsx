@@ -167,9 +167,13 @@ const FAQs: React.FC = () => {
             >
               For more queries, email us at{" "}
               <strong>admin@kuttystory.com</strong> or call{" "}
-              <strong>+91 98418 88001</strong>.
+              <strong className="whitespace-nowrap">+91 98418 88001</strong>
             </p>
-            <Button variant="cta" to="/Register">
+            <Button
+              variant="cta"
+              href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages.
+"
+            >
               Contact us
             </Button>
           </div>

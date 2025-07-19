@@ -5,7 +5,6 @@ import FloatingBackground from "../styles/FloatingBackground";
 import { BabyIcons } from "./BabyIcons";
 import { colors, fonts } from "../styles/Theme";
 
-// import images 
 import babyApple from "../assets/images/babyapple.jpeg";
 import babySmile from "../assets/images/babysmile.jpg";
 import babyJ from "../assets/images/babyj.jpeg";
@@ -24,27 +23,27 @@ const fadeUp: Variants = {
 
 const babyMoments = [
   {
-    url: babyApple,
+    image: babyApple,
     text: "Tiny kicks, growing dreams — this journey is just beginning.",
   },
   {
-    url: babySmile,
+    image: babySmile,
     text: "Glowing hearts and waiting motherhood is magic in motion.",
   },
   {
-    url: babyJ,
+    image: babyJ,
     text: "Two hearts beating together — soon to meet, never to part.",
   },
   {
-    url: babyRainbow,
+    image: babyRainbow,
     text: "The softest moments are the ones we never forget.",
   },
   {
-    url: babyPose,
+    image: babyPose,
     text: "Every heartbeat heard is a promise of a lifetime of love.",
   },
   {
-    url: babyJingle,
+    image: babyJingle,
     text: "A tiny flutter today, a hug tomorrow.",
   },
 ];
@@ -92,7 +91,7 @@ const YourStories = () => {
                   variants={fadeUp}
                 >
                   <img
-                    src={babyMoments[i].url}
+                    src={babyMoments[i].image}
                     alt={`Moment ${i + 1}`}
                     className="w-full h-44 object-cover rounded-xl shadow border-4 hover:scale-105 transition-transform duration-500"
                     style={{ borderColor: colors.lightpurple }}
@@ -151,7 +150,7 @@ const YourStories = () => {
                   variants={fadeUp}
                 >
                   <img
-                    src={babyMoments[i].url}
+                    src={babyMoments[i].image}
                     alt={`Moment ${i + 1}`}
                     className="w-full h-44 object-cover rounded-xl shadow border-4 hover:scale-105 transition-transform duration-500"
                     style={{ borderColor: colors.lightpurple }}
@@ -175,7 +174,7 @@ const YourStories = () => {
                 variants={fadeUp}
               >
                 <img
-                  src={moment.url}
+                  src={moment.image}
                   alt={`Moment ${idx + 1}`}
                   className="w-full h-auto object-cover shadow rounded-xl transform-gpu hover:scale-105 transition-transform duration-1000 hover:border-3"
                   style={{

@@ -5,7 +5,16 @@ import {
   FaInstagram,
   FaPinterest,
   FaWhatsapp,
+  FaYoutube,
 } from "react-icons/fa";
+
+const socialLinks = [
+  "https://web.whatsapp.com/",
+  "https://www.instagram.com/kuttystoryindia/?hl=en",
+  "https://www.facebook.com/61562672442380",
+  "https://in.pinterest.com/kuttystorybabyphotography/",
+];
+
 import { colors, fonts } from "../styles/Theme";
 
 const Footer: React.FC = () => {
@@ -123,11 +132,18 @@ const Footer: React.FC = () => {
               (Icon, idx) => (
                 <a
                   key={idx}
-                  href="#"
+                  href={socialLinks[idx]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: colors.whites }}
-                  className="hover:text-pink-300"
+                  style={{
+                    color: colors.whites,
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = colors.pinkdark)
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = colors.whites)
+                  }
                 >
                   <Icon size={30} />
                 </a>
@@ -152,10 +168,17 @@ const Footer: React.FC = () => {
                 style={{ color: `${colors.whites}cc` }}
               >
                 kuttystory is the unit of Skylimit Digital, a young motivated
-                company specializing in Baby & Product Photography. In
-                kuttystory, our focus is to create beautiful experiences that
-                stand forever. We provide high-quality and budget-conscious baby
-                photography services.
+                company specializing in Baby & Product Photography
+                (prodshoot.com), In kuttystory, our focus is to create beautiful
+                experiences that stand for ever. We provide high-quality and
+                budget-conscious baby photography services. We are a team with
+                Creative minds with Analytical heads – passionate in
+                photography, fresh in thought, dynamic at work with ample
+                industry experience.If you’re looking for something new for your
+                child, you’re in the right place. We strive to be industrious
+                and innovative, offering our customers something they really
+                want, putting their desires at the top of our priority list and
+                delivering them in a creative manner.
               </p>
             </div>
 
@@ -222,11 +245,17 @@ const Footer: React.FC = () => {
                       className="rounded p-2 shadow"
                       style={{ backgroundColor: colors.whites }}
                     >
-                      <img
-                        src="/public/KuttyStory_logo_new.png"
-                        alt="Kutty Story"
-                        className="h-6 w-6"
-                      />
+                      <a
+                        href="https://play.google.com/store/apps/details?id=com.skylimit.kuttystory"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src="/KuttyStory_logo_new.png"
+                          alt="Kutty Story"
+                          className="h-6 w-6"
+                        />
+                      </a>
                     </div>
                     <span
                       className="text-sm"
@@ -235,25 +264,26 @@ const Footer: React.FC = () => {
                       kuttystory
                     </span>
                   </div>
-                  <div className="app-item flex items-center space-x-3">
-                    <div
-                      className="rounded p-2 shadow"
-                      style={{ backgroundColor: colors.pinkmedium }}
-                    >
-                      <span
-                        className="text-sm font-bold"
-                        style={{ color: colors.whites }}
+                  <a
+                    href="https://www.youtube.com/channel/UCUXYslaWuY2VXbZ71V925Hw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="app-item flex items-center space-x-3">
+                      <div
+                        className="rounded p-2 shadow"
+                        style={{ backgroundColor: colors.pinkmedium }}
                       >
-                        ▶
+                        <FaYoutube size={16} color={colors.whites} />
+                      </div>
+                      <span
+                        className="text-sm"
+                        style={{ color: `${colors.whites}cc` }}
+                      >
+                        YouTube
                       </span>
                     </div>
-                    <span
-                      className="text-sm"
-                      style={{ color: `${colors.whites}cc` }}
-                    >
-                      youtube
-                    </span>
-                  </div>
+                  </a>
                 </div>
               </div>
 
@@ -304,15 +334,12 @@ const Footer: React.FC = () => {
           >
             <p>
               © 2025 All Rights Reserved | Powered by{" "}
-              <a
-                href="https://skylimitdigital.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <span
                 className="font-semibold hover-lift"
                 style={{ color: colors.pinkmedium }}
               >
                 Skylimit Digital
-              </a>
+              </span>
             </p>
           </div>
         </div>

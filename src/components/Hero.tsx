@@ -128,8 +128,6 @@ const Hero: React.FC = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            // height: "700px", // ✅ This fixes the visual height
-            // maxHeight: "100vh", // optional safety cap
           }}
         >
           <div className="absolute inset-0 bg-pink/20 " />
@@ -144,10 +142,12 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-2xl"
+          className="max-w-2xl space-y-4"
         >
+          {/* ⬇️ Overlayed Text Content */}
+
           <div
-            className="inline-block mb-4 px-4 sm:px-5 py-2 text-sm font-semibold shadow-sm animate-float rounded-full"
+            className="inline-block mb-3 px-4 sm:px-5 py-2 text-sm font-semibold shadow-sm animate-float rounded-full"
             style={{
               backgroundColor: colors.lightmauve,
               color: colors.cream,
@@ -155,18 +155,27 @@ const Hero: React.FC = () => {
           >
             {heroImages[currentIndex].caption}
           </div>
-          <h1
-            className="leading-tight mb-6 drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
+          <div
+            className="py-6 rounded-lg shadow-md"
             style={{
-              fontFamily: fonts.heading,
-              fontSize: "clamp(1.8rem, 4vw, 3.75rem)",
+              backgroundColor: "rgba(72, 37, 52, 0.35)",
             }}
           >
-            {heroImages[currentIndex].subtext}
-          </h1>
+            <h1
+              className="leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
+              style={{
+                fontFamily: fonts.heading,
+                fontSize: "clamp(1.8rem, 4vw, 3.75rem)",
+              }}
+            >
+              {heroImages[currentIndex].subtext}
+            </h1>
+          </div>
+
+          {/* ⬇️ Button NOT included in overlay */}
           <Button
             to="/Register"
-            className=" mt-4 inline-flex items-center px-5 sm:px-6 py-3 text-lg sm:text-base rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
+            className="inline-flex items-center px-5 sm:px-6 py-3 text-lg sm:text-base rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
           >
             Book Your Session
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -174,6 +183,7 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
+      {/* Prev Button */}
       <button
         aria-label="Previous Slide"
         onClick={() =>
@@ -193,6 +203,7 @@ const Hero: React.FC = () => {
         <ChevronLeft className="text-white w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
+      {/* Next Button */}
       <button
         aria-label="Next Slide"
         onClick={() =>
@@ -210,6 +221,7 @@ const Hero: React.FC = () => {
         <ChevronRight className="text-white w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
+      {/* Slide Dots */}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {heroImages.map((_, index) => (
           <button
@@ -223,6 +235,21 @@ const Hero: React.FC = () => {
             }`}
           />
         ))}
+      </div>
+      {/* Google Play Badge - Bottom Right */}
+      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20">
+        <a
+          href="https://play.google.com/store/apps/details?id=com.skylimit.kuttystory"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
+            alt="Get it on Google Play"
+            className="w-[120px] sm:w-[150px] md:w-[161px]"
+            style={{ border: 0 }}
+          />
+        </a>
       </div>
     </section>
   );
