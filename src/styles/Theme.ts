@@ -14,6 +14,7 @@ const colors = {
   whites: "#f2f2f2",
   pinkhome: "#b86c78",
   babypink: "#F999B7",
+  forr: "#a24d59ff",
 };
 
 const fonts = {
@@ -39,8 +40,8 @@ const buttons = {
     className:
       "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full border border-500",
     baseStyle: {
-      backgroundColor: colors.pinkdull, // Light Gold
-      color: colors.blacks,
+      backgroundColor: colors.forr, // Pastel Purple
+      color: colors.cream,
       fontFamily: fonts.heading,
     },
     hoverStyle: {
@@ -52,8 +53,8 @@ const buttons = {
     className:
       "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full border border-500",
     baseStyle: {
-      backgroundColor: colors.pinkdull, // Baby Blue
-      color: colors.pinkhome,
+      backgroundColor: colors.lightmauve, // Light Pink
+      color: colors.cream, // Dark Purple
       fontFamily: fonts.heading,
     },
     hoverStyle: {

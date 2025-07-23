@@ -120,7 +120,7 @@ const Gallery: React.FC = () => {
   return (
     <section
       id="gallery"
-      className="relative "
+      className="relative  "
       style={{
         backgroundColor: colors.cream,
         fontFamily: fonts.body,

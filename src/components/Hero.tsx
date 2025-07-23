@@ -111,9 +111,9 @@ const Hero: React.FC = () => {
       <div className="absolute top-0 w-full h-[96px] sm:h-[112px] lg:h-[128px] z-[1] pointer-events-none" />
 
       <div
-        className="absolute inset-0 z-0 shadow-lg"
+        className="absolute inset-0 z-0 shadow-lg "
         style={{
-          background: colors.pinkdark,
+          background: colors.blacks,
         }}
       />
 
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? "opacity-100 z-0" : "opacity-0"
+            index === currentIndex ? "opacity-62   z-0" : "opacity-0"
           }`}
           style={{
             backgroundImage: `url(${image.url})`,

@@ -39,7 +39,7 @@ const Register: React.FC = () => {
   return (
     <section style={{ fontFamily: fonts.body }}>
       <div
-        className="min-h-screen flex items-center justify-center p-4 pt-32"
+        className="min-h-screen flex items-center justify-center p-4 pt-20"
         style={{ backgroundColor: `${colors.pinkmedium}1A` }}
       >
         <div

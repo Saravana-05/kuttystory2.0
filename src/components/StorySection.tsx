@@ -72,6 +72,14 @@ const StorySection: React.FC = () => {
           style={{ borderColor: colors.cream }}
           onClick={handleImageClick}
         >
+          {/* Heart Badge */}
+          <div
+            className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-20 h-8 bg-pink-500 text-white text-xs font-semibold rounded-full shadow-lg animate-bounce"
+            style={{ fontFamily: fonts.body, backgroundColor: colors.pinkdark }}
+          >
+            ❤️ Click Me
+          </div>
+
           <div
             className={`relative aspect-[4/3] w-full transition-transform duration-700 transform-style preserve-3d ${
               flipped ? "rotate-y-180" : ""

@@ -1,16 +1,7 @@
 import React from "react";
-
-// import FloatingBackground from "../styles/FloatingBackground";
+import { motion } from "framer-motion";
 import { colors, fonts } from "../styles/Theme";
 
-// const fadeUp: Variants = {
-//   hidden: { opacity: 0, y: 40 },
-//   visible: {
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.6, ease: "easeOut" },
-//   },
-// };
 const YourApp = () => {
   return (
     <section
@@ -20,12 +11,16 @@ const YourApp = () => {
         fontFamily: fonts.body,
       }}
     >
-      {/* <FloatingBackground /> */}
       <div className="max-w-6xl mx-auto text-center mb-10">
-        {/* 📱 App Promo Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16 text-left animate-float">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16 text-left">
           {/* Left - Images */}
-          <div className="relative flex justify-center md:justify-start">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="relative flex justify-center md:justify-start"
+          >
             <div className="relative z-10 transform hover:scale-105 transition-transform duration-300 w-full max-w-sm sm:max-w-md md:max-w-lg">
               <div
                 className="rounded-3xl shadow-2xl border-8 relative overflow-hidden"
@@ -90,11 +85,17 @@ const YourApp = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right - Description */}
-          <div className="md:pl-4 text-center md:text-left max-w-xl mx-auto md:mx-0">
-            <p className="text-[colors.greys] text-lg md:text-lg font-normal  leading-relaxed mb-4">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="md:pl-4 text-center md:text-left max-w-xl mx-auto md:mx-0"
+          >
+            <p className="text-[colors.greys] text-lg md:text-lg font-normal leading-relaxed mb-4">
               A one-stop digital platform to share birth stories and capture the
               precious moments of your little ones in a memorable and meaningful
               way. Schedule photo shoots, create baby books, and order prints or
@@ -109,7 +110,7 @@ const YourApp = () => {
             >
               — Kuttystory
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

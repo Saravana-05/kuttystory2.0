@@ -75,7 +75,7 @@ const Statistics: React.FC = () => {
       label: "HAPPY CLIENTS",
       accentIcon: <Users className="h-6 w-6" />,
       solidColor: colors.mauve,
-      textColor: colors.pinkmedium,
+      textColor: colors.pinkdark,
       iconColor: colors.blacks,
     },
     {
@@ -84,7 +84,7 @@ const Statistics: React.FC = () => {
       label: "EVENTS",
       accentIcon: <Award className="h-6 w-6" />,
       solidColor: colors.lightpurple,
-      textColor: colors.pinkhome,
+      textColor: colors.pinkdark,
       iconColor: colors.lightpurple,
     },
     {
@@ -93,7 +93,7 @@ const Statistics: React.FC = () => {
       label: "COUNTRIES ACROSS",
       accentIcon: <TrendingUp className="h-6 w-6" />,
       solidColor: colors.purpledark,
-      textColor: colors.lightmauve,
+      textColor: colors.pinkdark,
       iconColor: colors.blue,
     },
   ];
@@ -194,7 +194,7 @@ const Statistics: React.FC = () => {
                 {/* Main Icon */}
                 <div className="mb-6 flex justify-center">
                   <div
-                    className="rounded-full p-4 shadow-lg group-hover:rotate-6 transition-transform duration-300"
+                    className="rounded-full p-4 shadow-lg group-hover:rotate-[360deg] transition-transform duration-1000"
                     style={{ backgroundColor: stat.textColor }}
                   >
                     <div style={{ color: colors.purpledark }}>{stat.icon}</div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
-
+import { motion } from "framer-motion";
 import { useHeartTrail } from "../styles/HeartTrail";
 
 // ✅ Import all images manually
@@ -88,114 +88,132 @@ const HowItWorks: React.FC = () => {
             our professional storytelling process
           </p>
         </div>
-
-        {/* Steps */}
-        <div className="relative max-w-6xl mx-auto">
-          {steps.map((step, index) => (
-            <div key={index} className="relative mb-12">
-              {/* Connector */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute left-1/2 top-36 w-1 h-16 -ml-0.5 z-0">
-                  <div
-                    className="w-full h-full rounded-full opacity-50"
-                    style={{ backgroundColor: colors.pinkmedium }}
-                  />
-                  <div
-                    className="absolute top-1/2 left-1/2 w-3 h-3 -ml-1.5 -mt-1.5 rounded-full border-2 animate-pulse"
-                    style={{
-                      backgroundColor: colors.whites,
-                      borderColor: colors.purpledark,
-                    }}
-                  />
-                </div>
-              )}
-
-              {/* Step Row */}
-              <div
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+        {steps.map((step, index) => (
+          <motion.div
+            key={index}
+            className="relative mb-12 max-w-6xl mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.15,
+              ease: "easeOut",
+            }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            {/* Connector */}
+            {index < steps.length - 1 && (
+              <motion.div
+                className="hidden md:block absolute left-1/2 top-[8rem] w-[4px] -ml-[2px] origin-top z-0 rounded-full"
+                initial={{ scaleY: 0, opacity: 0 }}
+                whileInView={{ scaleY: 1, opacity: 1 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.3 }}
+                style={{
+                  height: "4.5rem",
+                  background: `linear-gradient(to bottom, ${colors.pinkmedium}, ${colors.pinkdull})`,
+                }}
               >
-                {/* Image + Number + Emoji */}
-                <div className="flex-shrink-0 relative group">
-                  <div className="relative">
-                    {/* Step number */}
-                    <div
-                      className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 z-20"
-                      style={{
-                        backgroundColor: colors.pinkdull,
-                        borderColor: colors.lightmauve,
-                      }}
-                    >
-                      <span
-                        className="font-bold text-lg"
-                        style={{ color: colors.lightpurple }}
-                      >
-                        {index + 1}
-                      </span>
-                    </div>
+                {/* Animated Dot */}
+                <motion.div
+                  className="absolute top-full left-1/2 w-4 h-4 -ml-2 rounded-full border-2 shadow-md"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+                  viewport={{ once: false }}
+                  style={{
+                    backgroundColor: colors.whites,
+                    borderColor: colors.purpledark,
+                  }}
+                />
+              </motion.div>
+            )}
 
-                    {/* Step image */}
-                    <div
-                      className="w-32 h-32 rounded-3xl overflow-hidden shadow-xl border-4"
-                      style={{ borderColor: colors.pinkdull }}
-                    >
-                      <img
-                        src={step.image}
-                        alt={step.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-
-                    {/* Emoji */}
-                    <div
-                      className="absolute -bottom-2 -left-2 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 transition-transform duration-300"
-                      style={{
-                        backgroundColor: colors.pinklight,
-                        borderColor: colors.pinklight,
-                      }}
-                    >
-                      <span className="text-2xl">{step.emoji}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step Text */}
-                <div className="flex-1 group w-full">
+            {/* Step Row */}
+            <div
+              className={`relative flex flex-col md:flex-row items-center gap-8 ${
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
+            >
+              {/* Image + Number + Emoji */}
+              <div className="flex-shrink-0 relative group">
+                <div className="relative">
+                  {/* Step number */}
                   <div
-                    className="rounded-3xl p-6 shadow-xl border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                    className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 z-20"
                     style={{
-                      backgroundColor: colors.pinklight,
-                      borderColor: colors.pinkdark,
+                      backgroundColor: colors.pinkdull,
+                      borderColor: colors.lightmauve,
                     }}
                   >
-                    <h3
-                      className="text-2xl font-bold mb-3"
-                      style={{ color: colors.mauve }}
+                    <span
+                      className="font-bold text-lg"
+                      style={{ color: colors.lightpurple }}
                     >
-                      {step.title}
-                    </h3>
-                    <p
-                      className="text-base leading-relaxed mb-4"
-                      style={{ color: colors.blacks }}
-                    >
-                      {step.description}
-                    </p>
+                      {index + 1}
+                    </span>
+                  </div>
+
+                  {/* Step image */}
+                  <div
+                    className="w-32 h-32 rounded-3xl overflow-hidden shadow-xl border-4"
+                    style={{ borderColor: colors.pinkdull }}
+                  >
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+
+                  {/* Emoji */}
+                  <div
+                    className="absolute -bottom-2 -left-2 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 transition-transform duration-300"
+                    style={{
+                      backgroundColor: colors.pinklight,
+                      borderColor: colors.pinklight,
+                    }}
+                  >
+                    <span className="text-2xl">{step.emoji}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step Text */}
+              <div className="flex-1 group w-full">
+                <div
+                  className="rounded-3xl p-6 shadow-xl border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                  style={{
+                    backgroundColor: colors.pinklight,
+                    borderColor: colors.pinkdark,
+                  }}
+                >
+                  <h3
+                    className="text-2xl font-bold mb-3"
+                    style={{ color: colors.mauve }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="text-base leading-relaxed mb-4"
+                    style={{ color: colors.blacks }}
+                  >
+                    {step.description}
+                  </p>
+                  <div
+                    className="w-full h-2 rounded-full overflow-hidden"
+                    style={{ backgroundColor: colors.pinklight }}
+                  >
                     <div
-                      className="w-full h-2 rounded-full overflow-hidden"
-                      style={{ backgroundColor: colors.pinklight }}
-                    >
-                      <div
-                        className="h-full scale-x-75 group-hover:scale-x-100 transform origin-left transition-transform duration-1000"
-                        style={{ backgroundColor: colors.pinkdark }}
-                      ></div>
-                    </div>
+                      className="h-full scale-x-75 group-hover:scale-x-100 transform origin-left transition-transform duration-1000"
+                      style={{ backgroundColor: colors.pinkdark }}
+                    ></div>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        ))}
 
         {/* CTA */}
         <div className="flex justify-center items-center mt-12">

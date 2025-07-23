@@ -364,3 +364,25 @@
 .animate-puff {
   animation: puff 2s ease-in-out infinite;
 }
+
+@keyframes trace-border {
+  0% {
+    clip-path: inset(100% 0 0 0); /* start from top */
+  }
+  25% {
+    clip-path: inset(0 0 0 100%);
+  }
+  50% {
+    clip-path: inset(0 100% 0 0);
+  }
+  75% {
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-trace-border {
+  animation: trace-border 1.2s ease-out forwards;
+}
