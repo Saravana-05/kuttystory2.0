@@ -19,6 +19,25 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const branchModalRef = useRef<HTMLDivElement | null>(null); // 🔹 ADDED
 
+  const soundMap: { [key: string]: string } = {
+    HOME: "/src/assets/audio/sol1.mp3",
+    "HOW IT WORKS": "/src/assets/audio/re.mp3",
+    ALBUM: "/src/assets/audio/sol.mp3",
+    GALLERY: "/src/assets/audio/mi.mp3",
+    PACKAGE: "/src/assets/audio/fa.mp3",
+    FAQS: "/src/assets/audio/la.mp3",
+    BRANCH: "/src/assets/audio/si.mp3",
+    STUDIO: "/src/assets/audio/re2.mp3", // reuse or assign a different one
+  };
+  // ✅ No warning now
+  useEffect(() => {
+    Object.values(soundMap).forEach((src) => {
+      const audio = new Audio(src);
+      audio.preload = "auto";
+      audio.load();
+    });
+  }, []);
+
   const navigationItems = [
     { name: "HOME", hash: "#home" },
     { name: "HOW IT WORKS", hash: "#how-it-works" },
@@ -33,6 +52,15 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
     onSidebarToggle();
+  };
+
+  const playSound = (label: string) => {
+    const audioSrc = soundMap[label];
+    if (audioSrc) {
+      const audio = new Audio(audioSrc);
+      audio.volume = 0.3; // optional: set lower volume
+      audio.play().catch((err) => console.warn("Audio play failed", err));
+    }
   };
 
   useEffect(() => {
@@ -108,8 +136,10 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                       borderColor: colors.pinkdark,
                     }}
                     onMouseEnter={(e) => {
+                      console.log("Hovered:", item.name); // 👈 Add this
                       e.currentTarget.style.backgroundColor = colors.purpledark;
                       e.currentTarget.style.color = "#fff";
+                      playSound(item.name);
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = colors.pinkdull;
@@ -133,6 +163,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = colors.purpledark;
                       e.currentTarget.style.color = "#fff";
+                      playSound(item.name); // 🔈 ADD THIS LINE
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = colors.pinkdull;
@@ -156,8 +187,10 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                       borderColor: colors.pinkdark,
                     }}
                     onMouseEnter={(e) => {
+                      console.log("Hovered:", item.name); // 👈 Add this
                       e.currentTarget.style.backgroundColor = colors.purpledark;
                       e.currentTarget.style.color = "#fff";
+                      playSound(item.name);
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = colors.pinkdull;

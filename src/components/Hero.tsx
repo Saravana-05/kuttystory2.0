@@ -21,7 +21,7 @@ const heroImages = [
     url: babyPink,
     caption: "The Look That Stays Forever",
     subtext:
-      "In her soft eyes, she gazes into your soul —a moment you’ll hold forever.",
+      "In her soft eyes, she gazes into your soul — a moment you’ll hold forever.",
   },
   {
     url: babyMurugan,
@@ -49,6 +49,7 @@ const Hero: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // 🔄 Auto Slide
   useEffect(() => {
     startAutoSlide();
     return () => stopAutoSlide();
@@ -62,7 +63,10 @@ const Hero: React.FC = () => {
   };
 
   const stopAutoSlide = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
   };
 
   const handleManualChange = (newIndex: number) => {
@@ -70,6 +74,7 @@ const Hero: React.FC = () => {
     startAutoSlide();
   };
 
+  // ✨ Sparkles
   const sparkles = useMemo(
     () =>
       Array.from({ length: 30 }).map((_, i) => {
@@ -93,7 +98,8 @@ const Hero: React.FC = () => {
               opacity: 0.9,
               animationDelay: `${delay}s`,
               animationDuration: `${duration}s`,
-              filter: "blur(0.6px) drop-shadow(0 0 3px rgba(255,255,255,0.4))",
+              filter:
+                "blur(0.6px) drop-shadow(0 0 3px rgba(255,255,255,0.4))",
               zIndex: 5,
             }}
           />
@@ -108,20 +114,21 @@ const Hero: React.FC = () => {
       className="relative w-full overflow-visible flex items-center justify-center min-h-screen z-10"
       style={{ fontFamily: fonts.body, background: colors.pinkdark }}
     >
+      {/* Header Offset */}
       <div className="absolute top-0 w-full h-[96px] sm:h-[112px] lg:h-[128px] z-[1] pointer-events-none" />
 
+      {/* Dark Overlay */}
       <div
-        className="absolute inset-0 z-0 shadow-lg "
-        style={{
-          background: colors.blacks,
-        }}
+        className="absolute inset-0 z-0 shadow-lg"
+        style={{ background: colors.blacks }}
       />
 
+      {/* Background Images */}
       {heroImages.map((image, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? "opacity-62   z-0" : "opacity-0"
+            index === currentIndex ? "opacity-100 z-0" : "opacity-0"
           }`}
           style={{
             backgroundImage: `url(${image.url})`,
@@ -130,12 +137,14 @@ const Hero: React.FC = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="absolute inset-0 bg-pink/20 " />
+          <div className="absolute inset-0 bg-pink/20" />
         </div>
       ))}
 
+      {/* Sparkles */}
       {sparkles}
 
+      {/* Text + CTA */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 text-white flex flex-col justify-center items-start text-left">
         <motion.div
           key={currentIndex}
@@ -144,22 +153,18 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-2xl space-y-4"
         >
-          {/* ⬇️ Overlayed Text Content */}
-
+          {/* Caption */}
           <div
             className="inline-block mb-3 px-4 sm:px-5 py-2 text-sm font-semibold shadow-sm animate-float rounded-full"
-            style={{
-              backgroundColor: colors.lightmauve,
-              color: colors.cream,
-            }}
+            style={{ backgroundColor: colors.lightmauve, color: colors.cream }}
           >
             {heroImages[currentIndex].caption}
           </div>
+
+          {/* Subtext */}
           <div
             className="py-6 rounded-lg shadow-md"
-            style={{
-              backgroundColor: "rgba(72, 37, 52, 0.35)",
-            }}
+            style={{ backgroundColor: "rgba(72, 37, 52, 0.35)" }}
           >
             <h1
               className="leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
@@ -172,7 +177,7 @@ const Hero: React.FC = () => {
             </h1>
           </div>
 
-          {/* ⬇️ Button NOT included in overlay */}
+          {/* CTA Button */}
           <Button
             to="/Register"
             className="inline-flex items-center px-5 sm:px-6 py-3 text-lg sm:text-base rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
@@ -236,7 +241,8 @@ const Hero: React.FC = () => {
           />
         ))}
       </div>
-      {/* Google Play Badge - Bottom Right */}
+
+      {/* Google Play Badge */}
       <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20">
         <a
           href="https://play.google.com/store/apps/details?id=com.skylimit.kuttystory"
@@ -247,7 +253,6 @@ const Hero: React.FC = () => {
             src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
             alt="Get it on Google Play"
             className="w-[120px] sm:w-[150px] md:w-[161px]"
-            style={{ border: 0 }}
           />
         </a>
       </div>

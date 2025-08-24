@@ -356,12 +356,13 @@ const Footer: React.FC = () => {
             >
               <p>
                 © 2025 All Rights Reserved | Powered by{" "}
-                <span
+                <a
+                  href="https://skylimitdigital.com/"
                   className="font-semibold hover-lift"
                   style={{ color: colors.pinkmedium }}
                 >
                   Skylimit Digital
-                </span>
+                </a>
               </p>
             </div>
           </div>
