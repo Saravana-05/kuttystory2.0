@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import WaveFooter from "../components/WaveFooter";
 import { colors, fonts } from "../styles/Theme";
-// import logo from "../assets/KuttyStory_logo.png"; // update path if needed
+import logo from "../assets/KuttyStory_logo.png"; // update path if needed
 import baby from "../assets/images/kuttystory.jpg";
 import Button from "../styles/Button";
 
@@ -26,7 +26,7 @@ const Login: React.FC = () => {
   return (
     <>
       <div
-        className="min-h-screen pt-32 flex items-center justify-center p-4"
+        className="min-h-screen pt-20 flex items-center justify-center p-4"
         style={{ backgroundColor: `${colors.pinkmedium}1A` }}
       >
         <div
@@ -41,14 +41,14 @@ const Login: React.FC = () => {
             {/* Left - Form */}
             <div className="p-8 lg:p-12">
               <div className="max-w-md mx-auto text-center mb-8">
-                {/* <Link to="/" className="inline-block mb-6">
+                <Link to="/" className="inline-block mb-6">
                   <img
                     src={logo}
                     alt="Kutty Story Logo"
                     title="Meet the Team Behind Kuttystory photography"
                     className="h-20 w-auto mx-auto"
                   />
-                </Link> */}
+                </Link>
                 <h1
                   className="text-3xl font-bold mb-2"
                   style={{

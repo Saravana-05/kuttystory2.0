@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { colors, fonts } from "../styles/Theme"; // Adjust path as needed
+import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 // import Sparkles from "../styles/sparkle";
 import { useHeartTrail } from "../styles/HeartTrail";
+import { motion } from "framer-motion";
 
 const FAQs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const handleMouseMove = useHeartTrail();
 
   const faqs = [
     {
@@ -35,13 +37,12 @@ const FAQs: React.FC = () => {
         "We accept UPI, Credit/Debit Cards, and Net Banking. For international payments, contact admin@kuttystory.com.",
     },
   ];
-  const handleMouseMove = useHeartTrail();
 
   return (
     <section
       id="faqs"
       className="py-20 px-4 relative"
-      onMouseMove={handleMouseMove} // ✅ hooked up
+      onMouseMove={handleMouseMove}
       style={{ backgroundColor: colors.cream, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}
@@ -58,14 +59,21 @@ const FAQs: React.FC = () => {
         </p>
       </div>
 
-      {/* Two Column Folder Grid */}
+      {/* FAQ List */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
 
           return (
-            <div key={index} className="relative">
-              {/* Folder Style Top */}
+            <motion.div
+              key={index}
+              className="relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {/* Folder Top */}
               <div
                 className="relative z-10 cursor-pointer"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -106,7 +114,7 @@ const FAQs: React.FC = () => {
                 </div>
               </div>
 
-              {/* File Content */}
+              {/* Folder Body */}
               <div
                 className={`transition-all duration-500 overflow-hidden ${
                   isOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
@@ -123,10 +131,6 @@ const FAQs: React.FC = () => {
                       borderColor: colors.blue,
                     }}
                   >
-                    {/* <div
-                      className="absolute top-0 left-2 w-full h-1 rounded-t-xl"
-                      style={{ backgroundColor: colors.cream }}
-                    /> */}
                     <p
                       className="text-md leading-relaxed"
                       style={{
@@ -139,12 +143,12 @@ const FAQs: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
 
-      {/* Contact Section */}
+      {/* Contact CTA */}
       <div className="text-center mt-24">
         <div className="relative max-w-2xl mx-auto">
           <div className="absolute inset-0 bg-purple-600 rounded-2xl blur opacity-20"></div>
@@ -156,13 +160,13 @@ const FAQs: React.FC = () => {
             }}
           >
             <h3
-              className="text-2xl font-black mb-3 "
+              className="text-2xl font-black mb-3"
               style={{ color: colors.purpledark }}
             >
-              Still have questions?{" "}
+              Still have questions?
             </h3>
             <p
-              className="text-base mb-6 max-w-xl mx-auto leading-relaxed font-semibold "
+              className="text-base mb-6 max-w-xl mx-auto leading-relaxed font-semibold"
               style={{ color: colors.lightmauve }}
             >
               For more queries, email us at{" "}
@@ -171,8 +175,7 @@ const FAQs: React.FC = () => {
             </p>
             <Button
               variant="cta"
-              href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages.
-"
+              href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages."
             >
               Contact us
             </Button>

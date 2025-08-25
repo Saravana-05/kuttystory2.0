@@ -10,7 +10,7 @@ import {
   Award,
 } from "lucide-react";
 import Sparkles from "../styles/sparkle";
-
+import { motion } from "framer-motion";
 import babyCenter from "/src/assets/images/babycenter.jpg";
 import image3 from "/src/assets/images/image3.jpg";
 import babyShip from "/src/assets/images/babyship.jpeg";
@@ -157,11 +157,20 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonial Card */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }} // triggers every time it scrolls into view
           className="relative bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 transition-all duration-300"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
+          {/* <div
+            className="relative bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 transition-all duration-300"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          > */}
           {/* Top Bar */}
           <div
             className="h-2 w-full mb-6 rounded-full"
@@ -196,10 +205,19 @@ const Testimonials = () => {
               {/* Stars */}
               <div className="flex justify-center md:justify-start">
                 {[...Array(currentTest.rating)].map((_, i) => (
-                  <Star
+                  <motion.span
                     key={i}
-                    className="h-4 w-4 text-yellow-400 fill-yellow-400"
-                  />
+                    initial={{ opacity: 0, y: -5, scale: 0.8 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      delay: i * 0.1,
+                      duration: 0.3,
+                      ease: "easeOut",
+                    }}
+                    viewport={{ once: true, amount: 0.4 }}
+                  >
+                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                  </motion.span>
                 ))}
               </div>
             </div>
@@ -231,7 +249,8 @@ const Testimonials = () => {
           >
             <ChevronRight style={{ color: colors.pinkmedium }} />
           </button>
-        </div>
+          {/* </div> */}
+        </motion.div>
 
         {/* Dot Indicators */}
         <div className="flex justify-center mt-6 space-x-2">

@@ -4,6 +4,7 @@ import { colors, fonts } from "../styles/Theme"; // Adjust path as needed
 import Button from "../styles/Button";
 import FloatingBackground from "../styles/FloatingBackground";
 import { useHeartTrail } from "../styles/HeartTrail";
+import { motion } from "framer-motion";
 
 // import Sparkles from "../styles/sparkle";
 const Package: React.FC = () => {
@@ -154,8 +155,16 @@ const Package: React.FC = () => {
             const textColor = getTextColor(pkg.tier);
 
             return (
-              <article
+              <motion.article
                 key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.2,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: false, amount: 0.3 }}
                 className="relative group h-full"
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -268,7 +277,7 @@ const Package: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </div>

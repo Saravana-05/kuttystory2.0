@@ -6,6 +6,7 @@ import Sparkles from "../styles/sparkle";
 import kuttystoryone from "../assets/images/001_Kutty_Story_Front_Cover_transparent.png";
 import kuttystorytwo from "../assets/images/002_Kutty_Story_Inside.png";
 import kuttystorythree from "../assets/images/003_Kutty_Story_Cover_bothSides.png";
+import pageTurnMp3 from "../assets/audio/pageTurn.mp3";
 
 const Album = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -26,6 +27,10 @@ const Album = () => {
 
   const handleImageClick = (index: number) => {
     if (index !== currentImageIndex) {
+      const audio = new Audio(pageTurnMp3);
+      audio.currentTime = 0;
+      audio.play();
+
       setIsFlipping(true);
       setTimeout(() => {
         setCurrentImageIndex(index);
