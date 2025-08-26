@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { Mail, Phone } from "lucide-react";
+import React, { useEffect, useRef} from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   FaFacebook,
@@ -18,7 +18,31 @@ const socialLinks = [
   "https://in.pinterest.com/kuttystorybabyphotography/",
 ];
 
-const Footer: React.FC = () => {
+// Branch addresses - only for Chennai and Dindigul
+const branchAddresses = {
+  Chennai: {
+    address: "St.John's, Skylimit Digital 1/638 B Veerathamman Kovil Street, School Road, Jalladiampet, Chennai, Tamil Nadu 600100",
+    phone: "+91-9841888001",
+    email: "admin@kuttystory.com"
+  },
+  Dindigul: {
+    address: "38 A, Palani Rd, New Agraharam, Govindapuram, Tamil Nadu 624001", 
+    phone: "+91-9841888002",
+    email: "admin@kuttystory.com"
+  }
+};
+
+// Default contact info for branches without location
+const defaultContact = {
+  phone: "+91-9841888000",
+  email: "admin@kuttystory.com"
+};
+
+interface FooterProps {
+  selectedBranch?: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -40,6 +64,13 @@ const Footer: React.FC = () => {
     sectionRefs.forEach((ref) => observer.observe(ref));
     return () => observer.disconnect();
   }, []);
+
+  // Check if current branch has location data
+  const hasLocationData = selectedBranch && (selectedBranch === "Chennai" || selectedBranch === "Dindigul");
+  const currentBranchData = hasLocationData ? branchAddresses[selectedBranch as keyof typeof branchAddresses] : null;
+
+  // Get contact info - either from branch or default
+  const contactInfo = currentBranchData || defaultContact;
 
   return (
     <>
@@ -174,7 +205,7 @@ const Footer: React.FC = () => {
                 baby photography services. We are a team with Creative minds
                 with Analytical heads – passionate in photography, fresh in
                 thought, dynamic at work with ample industry experience. If
-                you’re looking for something new for your child, you’re in the
+                you're looking for something new for your child, you're in the
                 right place. We strive to be industrious and innovative,
                 offering our customers something they really want, putting their
                 desires at the top of our priority list and delivering them in a
@@ -182,7 +213,7 @@ const Footer: React.FC = () => {
               </p>
             </div>
 
-            {/* 2-column section for small screens */}
+            {/* 4-column section for larger screens, 2-column for small screens */}
             <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
               {/* LINKS */}
               <div className="footer-section">
@@ -249,7 +280,6 @@ const Footer: React.FC = () => {
               </div>
 
               {/* APPS */}
-              {/* APPS */}
               <div className="footer-section space-y-8 flex flex-col items-center text-center sm:items-start sm:text-left">
                 <div>
                   <h4
@@ -308,16 +338,33 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              {/* CONTACT */}
-              {/* CONTACT */}
+              {/* CONTACT/LOCATION - Conditional rendering based on branch */}
               <div className="footer-section flex flex-col items-center text-center sm:items-start sm:text-left space-y-4">
                 <h4
                   className="text-lg font-semibold"
                   style={{ color: colors.whites }}
                 >
-                  CONTACT US
+                  {hasLocationData ? "LOCATION" : "CONTACT"}
                 </h4>
+                
                 <div className="space-y-4">
+                  {/* Show address only for Chennai and Dindigul */}
+                  {hasLocationData && currentBranchData?.address && (
+                    <div className="contact-item flex items-start justify-center sm:justify-start space-x-3">
+                      <MapPin
+                        className="h-5 w-5 flex-shrink-0 mt-0.5"
+                        style={{ color: colors.pinkmedium }}
+                      />
+                      <span
+                        className="text-sm text-left"
+                        style={{ color: `${colors.whites}cc` }}
+                      >
+                        {currentBranchData.address}
+                      </span>
+                    </div>
+                  )}
+                  
+                  {/* Always show phone */}
                   <div className="contact-item flex items-center justify-center sm:justify-start space-x-3">
                     <Phone
                       className="h-5 w-5 flex-shrink-0"
@@ -327,9 +374,11 @@ const Footer: React.FC = () => {
                       className="text-sm"
                       style={{ color: `${colors.whites}cc` }}
                     >
-                      +91-9841888001
+                      {contactInfo.phone}
                     </span>
                   </div>
+                  
+                  {/* Always show email */}
                   <div className="contact-item flex items-center justify-center sm:justify-start space-x-3">
                     <Mail
                       className="h-5 w-5 flex-shrink-0"
@@ -339,7 +388,7 @@ const Footer: React.FC = () => {
                       className="text-sm"
                       style={{ color: `${colors.whites}cc` }}
                     >
-                      admin@kuttystory.com
+                      {contactInfo.email}
                     </span>
                   </div>
                 </div>

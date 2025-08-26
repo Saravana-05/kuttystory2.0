@@ -18,8 +18,8 @@ const colors = {
 };
 
 const fonts = {
-  heading: "'Happy Monkey', cursive",
-  body: "'Quicksand', sans-serif",
+heading: "'Montserrate Extralight', cursive",
+  body: "'Montserrate Black Italic', sans-serif",
 };
 
 const buttons = {
