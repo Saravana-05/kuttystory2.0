@@ -42,7 +42,7 @@ const Album = () => {
   return (
     <section
       id="album"
-      className="pt-14 sm:pb-11 relative overflow-hidden min-h-screen"
+      className="pt-14 sm:pb-11 relative overflow-hidden "
       style={{ backgroundColor: colors.pinkdull, fontFamily: fonts.body }}
     >
       <Sparkles />
