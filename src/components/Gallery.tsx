@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { X } from "lucide-react";
 import { colors, fonts } from "../styles/Theme"; // adjust as needed
 import Button from "../styles/Button";
 
@@ -40,7 +39,7 @@ const Gallery = () => {
         setError(null);
       } catch (error) {
         console.error('Error fetching Instagram posts:', error);
-        setError(err.message);
+        setError(error.message);
         setInstagramPosts([]);
       } finally {
         setLoading(false);
@@ -50,8 +49,10 @@ const Gallery = () => {
     fetchInstagramPosts();
   }, []);
 
-  const handleImageClick = (imageUrl) => {
-    setSelectedImage(imageUrl);
+  const handleImageClick = (permalink) => {
+    if (permalink) {
+      window.open(permalink, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const ImageBox = ({ image, classes }) => {
@@ -66,7 +67,7 @@ const Gallery = () => {
     return (
       <div
         className={`group relative cursor-pointer overflow-hidden rounded-2xl shadow-[0_4px_30px_rgba(71,4,109,0.35)] ring-1 ring-gray-300 ${classes} transition-all duration-300 transform hover:scale-105`}
-        onClick={() => handleImageClick(image.url)}
+        onClick={() => handleImageClick(image.permalink)}
       >
         <div className="w-full h-full aspect-[4/3] bg-gray-200">
           <img
@@ -215,35 +216,6 @@ const Gallery = () => {
           </div>
         </div>
       </div>
-
-      {/* Image Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div
-            className="relative max-w-6xl max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl"
-            style={{ backgroundColor: colors.whites }}
-          >
-            <div className="flex items-center justify-center max-h-[90vh]">
-              <img
-                src={selectedImage}
-                alt="Enlarged view"
-                className="max-w-full max-h-full object-contain"
-              />
-            </div>
-
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-110"
-              style={{ backgroundColor: colors.whites }}
-            >
-              <X className="h-6 w-6 text-gray-700" />
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
