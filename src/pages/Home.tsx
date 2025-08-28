@@ -17,8 +17,19 @@ import YourApp from "../components/YourApp";
 
 const Home: React.FC = () => {
   const [showTopButton, setShowTopButton] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState<string>("Chennai");
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const handleBranchSelect = (branch: string) => {
+    setSelectedBranch(branch);
+    console.log(`Branch selected in parent: ${branch}`);
+  };
+
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   useEffect(() => {
     const onScroll = () => setShowTopButton(window.scrollY > 300);
@@ -28,7 +39,10 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#ffbfd4]/50 relative overflow-x-hidden ">
-      <Header onSidebarToggle={() => {}} />
+      <Header 
+        onSidebarToggle={handleSidebarToggle}
+        onBranchSelect={handleBranchSelect}
+      />
 
       <main className="pt-16 ">
         {/* No animation for Hero since it's already in view */}
@@ -55,7 +69,7 @@ const Home: React.FC = () => {
         <FAQs />
       </main>
 
-      <Footer />
+      <Footer selectedBranch={selectedBranch} />
 
       {/* Back-to-top Button */}
       {showTopButton && (

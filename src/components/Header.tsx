@@ -6,18 +6,19 @@ import Logo from "../assets/KuttyStory_logo.png";
 
 interface HeaderProps {
   onSidebarToggle: () => void;
+  onBranchSelect?: (branch: string) => void; // Add prop to communicate with parent
 }
 
-const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
+const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showBranchModal, setShowBranchModal] = useState(false); // 🔹 ADDED
+  const [showBranchModal, setShowBranchModal] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const [showMobileBranchDropdown, setShowMobileBranchDropdown] =
     useState(false);
 
   const sidebarRef = useRef<HTMLDivElement | null>(null);
-  const branchModalRef = useRef<HTMLDivElement | null>(null); // 🔹 ADDED
+  const branchModalRef = useRef<HTMLDivElement | null>(null);
 
   const soundMap: { [key: string]: string } = {
     HOME: "/src/assets/audio/sol1.mp3",
@@ -26,17 +27,18 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
     GALLERY: "/src/assets/audio/mi.mp3",
     PACKAGE: "/src/assets/audio/fa.mp3",
     FAQS: "/src/assets/audio/la.mp3",
+    BLOG: "/src/assets/audio/mi.mp3",
     BRANCH: "/src/assets/audio/si.mp3",
-    STUDIO: "/src/assets/audio/re2.mp3", // reuse or assign a different one
+    STUDIO: "/src/assets/audio/re2.mp3",
   };
-  // ✅ No warning now
+
   useEffect(() => {
     Object.values(soundMap).forEach((src) => {
       const audio = new Audio(src);
       audio.preload = "auto";
       audio.load();
     });
-  }, []);
+  }, );
 
   const navigationItems = [
     { name: "HOME", hash: "#home" },
@@ -45,6 +47,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
     { name: "GALLERY", hash: "#gallery" },
     { name: "PACKAGE", hash: "#package" },
     { name: "FAQS", hash: "#faqs" },
+    { name: "BLOG", hash: "#blog" },
     { name: "BRANCH", hash: "#" },
     { name: "STUDIO", href: "https://store.kuttystory.com/user/login" },
   ];
@@ -58,9 +61,19 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
     const audioSrc = soundMap[label];
     if (audioSrc) {
       const audio = new Audio(audioSrc);
-      audio.volume = 0.3; // optional: set lower volume
+      audio.volume = 0.3;
       audio.play().catch((err) => console.warn("Audio play failed", err));
     }
+  };
+
+  const handleBranchSelect = (branch: string) => {
+    console.log(`Branch selected: ${branch}`);
+    if (onBranchSelect) {
+      onBranchSelect(branch);
+    }
+    setShowBranchModal(false);
+    setShowMobileBranchDropdown(false);
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -125,7 +138,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                     key={item.name}
                     type="button"
                     onClick={() => {
-                      setShowBranchModal((prev) => !prev); // toggle modal open/close
+                      setShowBranchModal((prev) => !prev);
                     }}
                     className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
                       index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
@@ -136,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                       borderColor: colors.pinkdark,
                     }}
                     onMouseEnter={(e) => {
-                      console.log("Hovered:", item.name); // 👈 Add this
+                      console.log("Hovered:", item.name);
                       e.currentTarget.style.backgroundColor = colors.purpledark;
                       e.currentTarget.style.color = "#fff";
                       playSound(item.name);
@@ -163,7 +176,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = colors.purpledark;
                       e.currentTarget.style.color = "#fff";
-                      playSound(item.name); // 🔈 ADD THIS LINE
+                      playSound(item.name);
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = colors.pinkdull;
@@ -187,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                       borderColor: colors.pinkdark,
                     }}
                     onMouseEnter={(e) => {
-                      console.log("Hovered:", item.name); // 👈 Add this
+                      console.log("Hovered:", item.name);
                       e.currentTarget.style.backgroundColor = colors.purpledark;
                       e.currentTarget.style.color = "#fff";
                       playSound(item.name);
@@ -254,25 +267,46 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
           </button>
         </div>
 
-        {/* 🔻 BRANCH MODAL HERE */}
+        {/* BRANCH MODAL - Dropdown style matching screenshot */}
         {showBranchModal && (
           <div
             ref={branchModalRef}
-            className="absolute top-[6.3rem] left-1/2 transform -translate-x-1/2 z-50 border shadow-lg rounded-md px-4 py-2 flex items-center gap-2"
-            style={{ backgroundColor: colors.pinkdull }}
+            className="absolute top-[6.5rem] left-1/2 transform -translate-x-1/2 z-50 border shadow-xl rounded-lg p-2 min-w-[150px]"
+            style={{ 
+              backgroundColor: colors.pinkdull,
+              borderColor: colors.pinkmedium,
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)'
+            }}
           >
-            {/* Branch Buttons */}
-            {["Chennai", "Dindigul", "Trichy"].map((branch) => (
-              <a
-                href="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = "/";
-                  // prevent scroll to top
-                  console.log(`Branch selected: ${branch}`);
-                  setShowBranchModal(false);
-                }}
-                className="text-sm font-semibold px-3 py-1 rounded-md transition duration-200"
+            {/* Branch buttons in vertical dropdown style */}
+            <div className="flex flex-col gap-2">
+              {["Chennai", "Dindigul", "Trichy", "Salem", "Coimbatore", "Bangalore"].map((branch) => (
+                <button
+                  key={branch}
+                  onClick={() => handleBranchSelect(branch)}
+                  className="text-sm font-semibold px-4 py-2 text-center rounded-lg transition duration-200 hover:scale-105"
+                  style={{
+                    backgroundColor: colors.pinkdark,
+                    color: colors.purpledark,
+                    border: `1px solid ${colors.pinkmedium}`,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = colors.purpledark;
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = colors.pinkdark;
+                    e.currentTarget.style.color = colors.purpledark;
+                  }}
+                >
+                  {branch}
+                </button>
+              ))}
+              
+              {/* Close button */}
+              <button
+                onClick={() => setShowBranchModal(false)}
+                className="text-sm font-semibold px-4 py-2 text-center rounded-lg transition duration-200 hover:scale-105 mt-1"
                 style={{
                   backgroundColor: colors.pinkdark,
                   color: colors.purpledark,
@@ -287,29 +321,9 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
                   e.currentTarget.style.color = colors.purpledark;
                 }}
               >
-                {branch}
-              </a>
-            ))}
-
-            {/* Close (X) Button */}
-            <button
-              onClick={() => setShowBranchModal(false)}
-              className="ml-auto px-3 py-1 text-sm font-bold  hover:text-white border rounded-md transition"
-              style={{
-                borderColor: colors.pinkmedium,
-                backgroundColor: colors.pinkdark,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = colors.purpledark;
-                e.currentTarget.style.color = "#fff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = colors.pinkdark;
-                e.currentTarget.style.color = colors.purpledark;
-              }}
-            >
-              ✕
-            </button>
+                ✕ Close
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -349,7 +363,6 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
               <X className="w-5 h-5" />
             </button>
           </div>
-          {/* 🔻 CLOSE BUTTON END */}
 
           <div className="flex flex-col gap-3 items-center">
             {navigationItems.map((item) =>
@@ -377,15 +390,10 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle }) => {
 
                   {showMobileBranchDropdown && (
                     <div className="mt-2 w-full flex flex-col items-center gap-2">
-                      {["Chennai", "Dindigul", "Trichy"].map((branch) => (
+                      {["Chennai", "Dindigul", "Trichy", "Salem", "Coimbatore", "Bangalore"].map((branch) => (
                         <button
                           key={branch}
-                          onClick={() => {
-                            console.log(`Branch selected: ${branch}`);
-                            setShowMobileBranchDropdown(false);
-                            setIsMenuOpen(false);
-                            window.location.href = "/";
-                          }}
+                          onClick={() => handleBranchSelect(branch)}
                           className="w-full text-center px-3 py-1 text-sm rounded-md transition duration-200"
                           style={{
                             backgroundColor: colors.pinkdark,
