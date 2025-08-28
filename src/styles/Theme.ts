@@ -18,8 +18,8 @@ const colors = {
 };
 
 const fonts = {
-heading: "'Montserrate Extralight', cursive",
-  body: "'Montserrate Black Italic', sans-serif",
+heading: "'Work Sans Extralight', cursive",
+  body: "'Work Sans'",
 };
 
 const buttons = {
