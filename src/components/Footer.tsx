@@ -27,14 +27,14 @@ const branchAddresses = {
   },
   Dindigul: {
     address: "38 A, Palani Rd, New Agraharam, Govindapuram, Tamil Nadu 624001", 
-    phone: "+91-9841888002",
+    phone: "+91-9841888001",
     email: "admin@kuttystory.com"
   }
 };
 
 // Default contact info for branches without location
 const defaultContact = {
-  phone: "+91-9841888000",
+  phone: "+91-9841888001",
   email: "admin@kuttystory.com"
 };
 

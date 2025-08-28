@@ -8,7 +8,7 @@ const Gallery = () => {
   const [instagramPosts, setInstagramPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const INSTAGRAM_ACCESS_TOKEN = 'IGAAJSK6PzynFBZAE9wT194bUtycURieXFVM3VjdEFlbVU0NFpqUGktS2ZAYbklCYjJ0b1pJeW1DWTFxbVlfWFZAhWlZA3YkJUZADBoc09yU0VFdURjU2J3ZAHpCVkU2Mlh6NlVYSUtMQ3k3R2dHRnFoSm5KR1ExcDhMQzF3VURZALVVaQQZDZD';
+  const INSTAGRAM_ACCESS_TOKEN = 'IGAALhk8PJCBJBZAE1ERHFOcWZAVa1JHa283NkpvcjFWSW1OMk5wN2EteS0yb3ZAXTVhMZAFp1TjJuRWw3TktDVExPbFhfSVRKVE05c0tXRTl6UUE0VHVqRVpITFVFRnIzc3p0Q0lDWExpMTZADYnYxdlI3cE5jWUx1aW9GSjhMOUFiUQZDZD';
   
   // Fetch Instagram posts
   useEffect(() => {
