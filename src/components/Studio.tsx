@@ -1,6 +1,4 @@
 import React from "react";
-// import { Camera, Heart, Star } from 'lucide-react';
-
 const Studio: React.FC = () => {
   return (
     <section

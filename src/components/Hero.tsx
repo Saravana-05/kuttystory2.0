@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
   // ✨ Sparkles
   const sparkles = useMemo(
     () =>
-      Array.from({ length: 30 }).map((_, i) => {
+      Array.from({ length: 12 }).map((_, i) => {
         const color =
           pastelColors[Math.floor(Math.random() * pastelColors.length)];
         const left = Math.random() * 100;
@@ -124,22 +124,20 @@ const Hero: React.FC = () => {
       />
 
       {/* Background Images */}
-      {heroImages.map((image, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? "opacity-100 z-0" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `url(${image.url})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="absolute inset-0 bg-pink/20" />
-        </div>
-      ))}
+{heroImages.map((image, index) => (
+  <img
+    key={index}
+    src={image.url}
+    alt={image.caption}
+    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+      index === currentIndex ? "opacity-100 z-0" : "opacity-0"
+    }`}
+    loading={index === 0 ? "eager" : "lazy"}
+    fetchpriority={index === 0 ? "high" : "auto"}
+  />
+))}
+<div className="absolute inset-0 bg-pink/20" />
+
 
       {/* Sparkles */}
       {sparkles}
@@ -253,6 +251,7 @@ const Hero: React.FC = () => {
             src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
             alt="Get it on Google Play"
             className="w-[120px] sm:w-[150px] md:w-[161px]"
+             loading="lazy"
           />
         </a>
       </div>
