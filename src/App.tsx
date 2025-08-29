@@ -1,18 +1,21 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
 } from "react-router-dom";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Header from "./components/Header";
-import ScrollToHashElement from "./styles/ScrollToHashElement";
-import PrivacyPolicy from "./userapp/PrivacyPolicy";
-import TermAndCondition from "./userapp/TermAndCondition";
-// import BabyFootprintTrail from "./styles/BabyFootprintTrail"; // 👣
+const ScrollToHashElement = lazy(() => import("./styles/ScrollToHashElement"));
+
+
+// ✅ Lazy load components/pages
+const Home = lazy(() => import("./pages/Home"));
+const Register = lazy(() => import("./pages/Register"));
+const Login = lazy(() => import("./pages/Login"));
+const Header = lazy(() => import("./components/Header"));
+const PrivacyPolicy = lazy(() => import("./userapp/PrivacyPolicy"));
+const TermAndCondition = lazy(() => import("./userapp/TermAndCondition"));
+// const BabyFootprintTrail = lazy(() => import("./styles/BabyFootprintTrail")); // 👣
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -34,18 +37,18 @@ const AppContent: React.FC = () => {
         className="min-h-screen relative overflow-hidden"
         style={{ backgroundColor: "#fafafa" }}
       >
-        {!shouldHideHeader && <Header onSidebarToggle={() => {}} />}
+       <Suspense fallback={<div>Loading...</div>}>
+  <ScrollToHashElement />
+  {!shouldHideHeader && <Header onSidebarToggle={() => {}} />}
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/term-condition" element={<TermAndCondition />} />
-        </Routes>
-
-        {/* 👣 Baby Footprint Trail */}
-        {/* <BabyFootprintTrail /> */}
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+    <Route path="/term-condition" element={<TermAndCondition />} />
+  </Routes>
+</Suspense>
       </div>
     </>
   );

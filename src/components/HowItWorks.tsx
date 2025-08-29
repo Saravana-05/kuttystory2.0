@@ -6,14 +6,9 @@ import { useHeartTrail } from "../styles/HeartTrail";
 
 // ✅ Import all images manually
 import imgsubscribe from "/src/assets/images/subscribebaby.jpg";
-// import image1 from "/src/assets/images/image3.jpg";
 import parentcam from "/src/assets/images/parentcam.jpg";
-
-// import image2 from "/src/assets/images/image 2.png";
 import image3 from "/src/assets/images/image4.jpg";
 import angel from "/src/assets/images/angelbaby.jpg";
-// import image4 from "/src/assets/images/image5.jpg";
-// import image5 from "/src/assets/images/kuttystorybook.png";
 import kuttybook from "/src/assets/images/bookheld.png";
 
 const HowItWorks: React.FC = () => {

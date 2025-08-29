@@ -18,7 +18,7 @@ const socialLinks = [
   "https://in.pinterest.com/kuttystorybabyphotography/",
 ];
 
-// Branch addresses - only for Chennai and Dindigul
+// Branch addresses - expanded to include all branches
 const branchAddresses = {
   Chennai: {
     address: "St.John's, Skylimit Digital 1/638 B Veerathamman Kovil Street, School Road, Jalladiampet, Chennai, Tamil Nadu 600100",
@@ -27,6 +27,26 @@ const branchAddresses = {
   },
   Dindigul: {
     address: "38 A, Palani Rd, New Agraharam, Govindapuram, Tamil Nadu 624001", 
+    phone: "+91-9841888001",
+    email: "admin@kuttystory.com"
+  },
+  Trichy: {
+    address: "123 Main Street, Trichy Central, Tiruchirappalli, Tamil Nadu 620001",
+    phone: "+91-9841888001", 
+    email: "admin@kuttystory.com"
+  },
+  Salem: {
+    address: "456 Gandhi Road, Salem Junction, Salem, Tamil Nadu 636001",
+    phone: "+91-9841888001",
+    email: "admin@kuttystory.com"
+  },
+  Coimbatore: {
+    address: "789 Avinashi Road, Peelamedu, Coimbatore, Tamil Nadu 641004",
+    phone: "+91-9841888001",
+    email: "admin@kuttystory.com"
+  },
+  Bangalore: {
+    address: "101 MG Road, Commercial Street, Bangalore, Karnataka 560001",
     phone: "+91-9841888001",
     email: "admin@kuttystory.com"
   }
@@ -66,7 +86,7 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
   }, []);
 
   // Check if current branch has location data
-  const hasLocationData = selectedBranch && (selectedBranch === "Chennai" || selectedBranch === "Dindigul");
+  const hasLocationData = selectedBranch && (selectedBranch in branchAddresses);
   const currentBranchData = hasLocationData ? branchAddresses[selectedBranch as keyof typeof branchAddresses] : null;
 
   // Get contact info - either from branch or default
@@ -146,6 +166,16 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
         .icon-marquee:hover {
           animation-play-state: paused;
           cursor: pointer;
+        }
+
+        .selected-branch-indicator {
+          background: linear-gradient(45deg, ${colors.pinkmedium}, ${colors.pinkdark});
+          color: white;
+          padding: 2px 8px;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          margin-left: 8px;
         }
       `}</style>
 
@@ -341,14 +371,19 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
               {/* CONTACT/LOCATION - Conditional rendering based on branch */}
               <div className="footer-section flex flex-col items-center text-center sm:items-start sm:text-left space-y-4">
                 <h4
-                  className="text-lg font-semibold"
+                  className="text-lg font-semibold flex items-center"
                   style={{ color: colors.whites }}
                 >
                   {hasLocationData ? "LOCATION" : "CONTACT"}
+                  {selectedBranch && (
+                    <span className="selected-branch-indicator">
+                      {selectedBranch}
+                    </span>
+                  )}
                 </h4>
                 
                 <div className="space-y-4">
-                  {/* Show address only for Chennai and Dindigul */}
+                  {/* Show address for all selected branches */}
                   {hasLocationData && currentBranchData?.address && (
                     <div className="contact-item flex items-start justify-center sm:justify-start space-x-3">
                       <MapPin
