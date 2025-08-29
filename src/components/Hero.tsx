@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
   // ✨ Sparkles
   const sparkles = useMemo(
     () =>
-      Array.from({ length: 12 }).map((_, i) => {
+      Array.from({ length: 10 }).map((_, i) => {
         const color =
           pastelColors[Math.floor(Math.random() * pastelColors.length)];
         const left = Math.random() * 100;

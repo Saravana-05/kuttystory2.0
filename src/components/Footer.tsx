@@ -1,13 +1,11 @@
 import React, { useEffect, useRef} from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
-  FaWhatsapp,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
+import { FaPinterest} from "react-icons/fa6";
+import { FaWhatsapp} from "react-icons/fa6";
+import {  FaYoutube,} from "react-icons/fa6";
 
 import { colors, fonts } from "../styles/Theme";
 
@@ -31,22 +29,22 @@ const branchAddresses = {
     email: "admin@kuttystory.com"
   },
   Trichy: {
-    address: "123 Main Street, Trichy Central, Tiruchirappalli, Tamil Nadu 620001",
+    address: "Tiruchirappalli, Tamil Nadu",
     phone: "+91-9841888001", 
     email: "admin@kuttystory.com"
   },
   Salem: {
-    address: "456 Gandhi Road, Salem Junction, Salem, Tamil Nadu 636001",
+    address: "Salem, Tamil Nadu",
     phone: "+91-9841888001",
     email: "admin@kuttystory.com"
   },
   Coimbatore: {
-    address: "789 Avinashi Road, Peelamedu, Coimbatore, Tamil Nadu 641004",
+    address: "Coimbatore, Tamil Nadu",
     phone: "+91-9841888001",
     email: "admin@kuttystory.com"
   },
   Bangalore: {
-    address: "101 MG Road, Commercial Street, Bangalore, Karnataka 560001",
+    address: "Bangalore, Karnataka",
     phone: "+91-9841888001",
     email: "admin@kuttystory.com"
   }
