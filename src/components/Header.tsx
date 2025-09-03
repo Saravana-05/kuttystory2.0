@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
-import Logo from "../assets/KuttyStory_logo.png";
+import Logo from "../assets/KuttyStory_logo.webp";
 
 interface HeaderProps {
   onSidebarToggle: () => void;
@@ -272,9 +272,9 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6" aria-hidden="true"/>
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6" aria-hidden="true"/>
             )}
           </button>
         </div>
@@ -333,6 +333,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                   e.currentTarget.style.backgroundColor = colors.pinkdark;
                   e.currentTarget.style.color = colors.purpledark;
                 }}
+                aria-label="Close branch selection"
               >
                 ✕ Close
               </button>
@@ -373,8 +374,9 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                 e.currentTarget.style.backgroundColor = colors.pinkdark;
                 e.currentTarget.style.color = colors.purpledark;
               }}
+              aria-label="Close sidebar menu"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5"  aria-hidden="true"/>
             </button>
           </div>
 
@@ -398,6 +400,8 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                       e.currentTarget.style.backgroundColor = colors.cream;
                       e.currentTarget.style.color = colors.mauve;
                     }}
+                    aria-label="Toggle branch selection"
+                     aria-expanded={showMobileBranchDropdown}
                   >
                     BRANCH
                   </button>

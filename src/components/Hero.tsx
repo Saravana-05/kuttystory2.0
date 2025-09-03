@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 
 // 📸 Import Hero Images
-import babyRed from "../assets/images/babyred.webp";
-import babyPink from "../assets/images/babypink.jpg";
-import babyMurugan from "../assets/images/ks2.jpeg";
-import babyKrish from "../assets/images/babykrish.jpeg";
+import babyRed from "../assets/images/babyred.avif";
+import babyPink from "../assets/images/babypink.webp";
+import babyMurugan from "../assets/images/ks2.webp";
+import babyKrish from "../assets/images/babykrish.webp";
 
 const heroImages = [
   {
@@ -21,7 +20,7 @@ const heroImages = [
     url: babyPink,
     caption: "The Look That Stays Forever",
     subtext:
-      "In her soft eyes, she gazes into your soul — a moment you’ll hold forever.",
+      "In her soft eyes, she gazes into your soul — a moment you'll hold forever.",
   },
   {
     url: babyMurugan,
@@ -47,13 +46,17 @@ const pastelColors = [
 
 const Hero: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // 🔄 Auto Slide
   useEffect(() => {
-    startAutoSlide();
+    // Only start auto-slide after first image loads
+    if (isLoaded) {
+      startAutoSlide();
+    }
     return () => stopAutoSlide();
-  }, []);
+  }, [isLoaded]);
 
   const startAutoSlide = () => {
     stopAutoSlide();
@@ -74,10 +77,17 @@ const Hero: React.FC = () => {
     startAutoSlide();
   };
 
-  // ✨ Sparkles
+  // Handle first image load
+  const handleFirstImageLoad = () => {
+    setIsLoaded(true);
+  };
+
+  // ✨ Sparkles - Only render after images load
   const sparkles = useMemo(
     () =>
-      Array.from({ length: 10 }).map((_, i) => {
+
+      isLoaded ? Array.from({ length: 10 }).map((_, i) => {
+
         const color =
           pastelColors[Math.floor(Math.random() * pastelColors.length)];
         const left = Math.random() * 100;
@@ -104,8 +114,8 @@ const Hero: React.FC = () => {
             }}
           />
         );
-      }),
-    []
+      }) : [],
+    [isLoaded]
   );
 
   return (
@@ -123,37 +133,45 @@ const Hero: React.FC = () => {
         style={{ background: colors.blacks }}
       />
 
-      {/* Background Images */}
-{heroImages.map((image, index) => (
-  <img
-    key={index}
-    src={image.url}
-    alt={image.caption}
-    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-      index === currentIndex ? "opacity-100 z-0" : "opacity-0"
-    }`}
-    loading={index === 0 ? "eager" : "lazy"}
-    fetchpriority={index === 0 ? "high" : "auto"}
-  />
-))}
-<div className="absolute inset-0 bg-pink/20" />
+
+      {/* Background Images - Optimized */}
+      {heroImages.map((image, index) => (
+        <img
+          key={index}
+          src={image.url}
+          alt={image.caption}
+          className={`absolute inset-0 w-full h-full object-cover ${
+            index === currentIndex ? "opacity-100 z-0" : "opacity-0"
+          }`}
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 ? "high" : "auto"}
+          onLoad={index === 0 ? handleFirstImageLoad : undefined}
+          style={{
+            transition: index === currentIndex ? 'opacity 0.8s ease-in-out' : 'none',
+            willChange: index === currentIndex ? 'opacity' : 'auto'
+          }}
+        />
+      ))}
+      <div className="absolute inset-0 bg-pink/20" />
 
 
-      {/* Sparkles */}
+      {/* Sparkles - Only render when loaded */}
       {sparkles}
 
-      {/* Text + CTA */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 text-white flex flex-col justify-center items-start text-left">
-        <motion.div
+      {/* Text + CTA - Responsive layout with proper spacing for controls */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-16 sm:px-20 md:px-24 lg:px-32 text-white flex flex-col justify-center items-start text-left">
+        <div
           key={currentIndex}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-2xl space-y-4"
+          className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl space-y-3 sm:space-y-4"
+          style={{
+            opacity: isLoaded ? 1 : 0,
+            transform: isLoaded ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+          }}
         >
           {/* Caption */}
           <div
-            className="inline-block mb-3 px-4 sm:px-5 py-2 text-sm font-semibold shadow-sm animate-float rounded-full"
+            className="inline-block mb-2 sm:mb-3 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold shadow-sm animate-float rounded-full"
             style={{ backgroundColor: colors.lightmauve, color: colors.cream }}
           >
             {heroImages[currentIndex].caption}
@@ -161,14 +179,15 @@ const Hero: React.FC = () => {
 
           {/* Subtext */}
           <div
-            className="py-6 rounded-lg shadow-md"
+            className="py-4 sm:py-5 md:py-6 px-3 sm:px-4 rounded-lg shadow-md"
             style={{ backgroundColor: "rgba(72, 37, 52, 0.35)" }}
           >
             <h1
               className="leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
               style={{
                 fontFamily: fonts.heading,
-                fontSize: "clamp(1.8rem, 4vw, 3.75rem)",
+                fontSize: "clamp(1.2rem, 3.5vw, 3.75rem)",
+                lineHeight: "1.2",
               }}
             >
               {heroImages[currentIndex].subtext}
@@ -176,17 +195,19 @@ const Hero: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <Button
-            to="/Register"
-            className="inline-flex items-center px-5 sm:px-6 py-3 text-lg sm:text-base rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
-          >
-            Book Your Session
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </motion.div>
+          <div className="pt-2 sm:pt-3">
+            <Button
+              to="/Register"
+              className="inline-flex items-center px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
+            >
+              Book Your Session
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+            </Button>
+          </div>
+        </div>
       </div>
 
-      {/* Prev Button */}
+      {/* Prev Button - Improved mobile positioning */}
       <button
         aria-label="Previous Slide"
         onClick={() =>
@@ -194,7 +215,7 @@ const Hero: React.FC = () => {
             (currentIndex - 1 + heroImages.length) % heroImages.length
           )
         }
-        className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 p-2 sm:p-3 rounded-full z-20 transition opacity-80"
+        className="absolute left-2 sm:left-4 md:left-6 top-1/2 transform -translate-y-1/2 p-1.5 sm:p-2 md:p-3 rounded-full z-20 transition opacity-80 shadow-lg"
         style={{ backgroundColor: colors.pinkmedium }}
         onMouseEnter={(e) =>
           (e.currentTarget.style.backgroundColor = colors.purpledark)
@@ -203,16 +224,16 @@ const Hero: React.FC = () => {
           (e.currentTarget.style.backgroundColor = colors.pinkmedium)
         }
       >
-        <ChevronLeft className="text-white w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronLeft className="text-white w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
       </button>
 
-      {/* Next Button */}
+      {/* Next Button - Improved mobile positioning */}
       <button
         aria-label="Next Slide"
         onClick={() =>
           handleManualChange((currentIndex + 1) % heroImages.length)
         }
-        className="absolute right-4 sm:right-6 top-1/2 transform -translate-y-1/2 p-2 sm:p-3 rounded-full z-20 transition opacity-80"
+        className="absolute right-2 sm:right-4 md:right-6 top-1/2 transform -translate-y-1/2 p-1.5 sm:p-2 md:p-3 rounded-full z-20 transition opacity-80 shadow-lg"
         style={{ backgroundColor: colors.pinkmedium }}
         onMouseEnter={(e) =>
           (e.currentTarget.style.backgroundColor = colors.purpledark)
@@ -221,37 +242,44 @@ const Hero: React.FC = () => {
           (e.currentTarget.style.backgroundColor = colors.pinkmedium)
         }
       >
-        <ChevronRight className="text-white w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronRight className="text-white w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
       </button>
 
-      {/* Slide Dots */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      {/* Slide Dots - Better mobile spacing */}
+      <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 flex space-x-3 sm:space-x-4 z-20">
         {heroImages.map((_, index) => (
           <button
             key={index}
             aria-label={`Go to slide ${index + 1}`}
             onClick={() => handleManualChange(index)}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
-              index === currentIndex
-                ? "bg-[#fb9ca6]"
-                : "bg-[#ffcbcb]/80 hover:bg-[#3d0766ff]/80"
-            }`}
-          />
+            className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-200"
+          >
+            <span
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 ${
+                index === currentIndex
+                  ? "bg-[#fb9ca6] scale-125"
+                  : "bg-[#ffcbcb]/80 hover:bg-[#fb9ca6]/80 hover:scale-110"
+              }`}
+            />
+          </button>
         ))}
       </div>
 
-      {/* Google Play Badge */}
-      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20">
+      {/* Google Play Badge - Responsive positioning */}
+      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-20">
         <a
           href="https://play.google.com/store/apps/details?id=com.skylimit.kuttystory"
           target="_blank"
           rel="noopener noreferrer"
+          className="block"
         >
           <img
             src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
             alt="Get it on Google Play"
-            className="w-[120px] sm:w-[150px] md:w-[161px]"
-             loading="lazy"
+
+            className="w-[100px] sm:w-[130px] md:w-[150px] lg:w-[161px] transition-transform duration-200 hover:scale-105"
+            loading="lazy"
+
           />
         </a>
       </div>

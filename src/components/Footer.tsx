@@ -164,17 +164,9 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
         .icon-marquee:hover {
           animation-play-state: paused;
           cursor: pointer;
-        }
 
-        .selected-branch-indicator {
-          background: linear-gradient(45deg, ${colors.pinkmedium}, ${colors.pinkdark});
-          color: white;
-          padding: 2px 8px;
-          border-radius: 12px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          margin-left: 8px;
-        }
+        } 
+
       `}</style>
 
       <footer
