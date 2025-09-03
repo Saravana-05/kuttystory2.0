@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 import { useHeartTrail } from "../styles/HeartTrail";
 
 // ✅ Import all images manually
+
 import imgsubscribe from "/src/assets/images/subscribebaby.webp";
 import parentcam from "/src/assets/images/parentcam.webp";
 import image3 from "/src/assets/images/image3.webp";
 import angel from "/src/assets/images/angelbaby.webp";
 import kuttybook from "/src/assets/images/bookheld.webp";
+
 
 const HowItWorks: React.FC = () => {
   const steps = [

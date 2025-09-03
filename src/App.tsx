@@ -24,6 +24,7 @@ const PageLoader = () => (
   </div>
 );
 
+
 const AppContent: React.FC = () => {
   const location = useLocation();
 
@@ -45,6 +46,7 @@ const AppContent: React.FC = () => {
         className="min-h-screen relative overflow-hidden"
         style={{ backgroundColor: "#fafafa" }}
       >
+
         {/* ✅ Header loads immediately when needed */}
         {!shouldHideHeader && <Header onSidebarToggle={() => {}} />}
         
@@ -58,6 +60,7 @@ const AppContent: React.FC = () => {
             <Route path="/term-condition" element={<TermAndCondition />} />
           </Routes>
         </Suspense>
+
       </div>
     </>
   );

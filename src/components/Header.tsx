@@ -319,6 +319,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
               <button
                 onClick={() => setShowBranchModal(false)}
                 className="text-sm font-semibold px-4 py-2 text-center rounded-lg transition duration-200 hover:scale-105 mt-1"
+                 aria-label="Close branch modal"
                 style={{
                   backgroundColor: colors.pinkdark,
                   color: colors.purpledark,
@@ -359,6 +360,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
             <button
               onClick={() => setIsMenuOpen(false)}
               className="p-2 rounded-full transition duration-200"
+               aria-label="Close menu"
               style={{
                 backgroundColor: colors.pinkdark,
                 color: colors.purpledark,
