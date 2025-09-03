@@ -439,6 +439,8 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
               <p>
                 © 2025 All Rights Reserved | Powered by{" "}
                 <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href="https://skylimitdigital.com/"
                   className="font-semibold hover-lift"
                   style={{ color: colors.pinkmedium }}
