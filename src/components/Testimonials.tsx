@@ -11,11 +11,11 @@ import {
 } from "lucide-react";
 import Sparkles from "../styles/sparkle";
 import { motion } from "framer-motion";
-import babyCenter from "/src/assets/images/babycenter.jpg";
-import image3 from "/src/assets/images/image3.jpg";
-import babyShip from "/src/assets/images/babyship.jpeg";
-import image6 from "/src/assets/images/image6.jpg";
-import image7 from "/src/assets/images/image7.jpg";
+import babyCenter from "/src/assets/images/babycenter.webp";
+import image3 from "/src/assets/images/image3.webp";
+import babyShip from "/src/assets/images/babyship.webp";
+import image6 from "/src/assets/images/image6.webp";
+import image7 from "/src/assets/images/image7.webp";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 const Testimonials = () => {
@@ -24,53 +24,53 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Shilpa germaine alfred",
       role: "New Mom",
       image: babyCenter,
       rating: 5,
-      text: "Kutty Story captured the most precious moments of our baby's first year. The photographers were so patient and gentle with our little one. The final album is absolutely stunning!",
+      text: "Very professional and courteous! They are quick with the work assigned and give very satisfying results! Thank you Mr. Leslie and team!",
       category: "Baby Photography",
-      location: "New York",
+      location: "Chennai",
       icon: <Camera className="h-6 w-6" />,
     },
     {
-      name: "Michael & Emma",
+      name: "Mona Jain",
       role: "Happy Parents",
       image: image3,
       rating: 5,
       text: "From maternity to first birthday, Kutty Story has been with us every step of the way. Their creativity and professionalism are unmatched. Highly recommended!",
       category: "Family Sessions",
-      location: "California",
+      location: "Chennai",
       icon: <Users className="h-6 w-6" />,
     },
     {
-      name: "Priya Sharma",
-      role: "Proud Mother",
+      name: "Nitesh Agarwal",
+      role: "Proud Parents",
       image: babyShip,
       rating: 5,
-      text: "The team at Kutty Story made our photo session so comfortable and fun. They captured our baby's personality perfectly. The memories they created are priceless!",
+      text: "Had a small session with them for my 1 year son photoshoot. The images which i received finally was awesome. Will recommend them for kids photography. Very friendly team. Best wishes to the entire team.",
       category: "Newborn Session",
-      location: "Mumbai",
+      location: "Chennai",
       icon: <Award className="h-6 w-6" />,
     },
     {
-      name: "David & Lisa",
-      role: "First Time Parents",
+      name: "Nithya Joe",
+      role: "Happy Parents",
       image: image6,
       rating: 5,
       text: "We were nervous about our first baby photoshoot, but Kutty Story made it magical! The photos are breathtaking and we'll treasure them forever. Thank you!",
       category: "Milestone Photography",
-      location: "Texas",
+      location: "Dindigul",
       icon: <Heart className="h-6 w-6" />,
     },
     {
-      name: "Anjali Patel",
-      role: "Mother of Two",
+      name: "Karthiga Soundararajan",
+      role: "Happy Mother",
       image: image7,
       rating: 5,
-      text: "Both my children's first year albums are from Kutty Story. The quality, creativity, and service are exceptional. They truly understand how to capture childhood magic!",
+      text: "From deciding the theme to end, totally it was awesome experience with kuttystory. They are so user friendly, had patience when shooting and done very good job on all ask with respect to customization. Thank you so much for capturing precious beautiful memories of our baby",
       category: "Children Photography",
-      location: "London",
+      location: "Dindigul",
       icon: <Star className="h-6 w-6" />,
     },
   ];

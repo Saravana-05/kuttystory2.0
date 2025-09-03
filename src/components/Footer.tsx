@@ -164,17 +164,7 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
         .icon-marquee:hover {
           animation-play-state: paused;
           cursor: pointer;
-        }
-
-        .selected-branch-indicator {
-          background: linear-gradient(45deg, ${colors.pinkmedium}, ${colors.pinkdark});
-          color: white;
-          padding: 2px 8px;
-          border-radius: 12px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          margin-left: 8px;
-        }
+        } 
       `}</style>
 
       <footer
@@ -369,15 +359,10 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
               {/* CONTACT/LOCATION - Conditional rendering based on branch */}
               <div className="footer-section flex flex-col items-center text-center sm:items-start sm:text-left space-y-4">
                 <h4
-                  className="text-lg font-semibold flex items-center"
+                  className="text-lg font-semibold"
                   style={{ color: colors.whites }}
                 >
                   {hasLocationData ? "LOCATION" : "CONTACT"}
-                  {selectedBranch && (
-                    <span className="selected-branch-indicator">
-                      {selectedBranch}
-                    </span>
-                  )}
                 </h4>
                 
                 <div className="space-y-4">

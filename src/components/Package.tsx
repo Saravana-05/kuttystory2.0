@@ -84,7 +84,7 @@ const Package: React.FC = () => {
       name: "PLATINUM",
       icon: Diamond,
       price: "₹48470",
-      originalPrice: "₹55000",
+      originalPrice: "₹65500",
       description:
         "Three baby photo shoots and your favorite memories combined into a premium album for your child’s first birthday.",
       features: [

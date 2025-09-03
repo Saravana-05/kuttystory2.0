@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { colors, fonts } from "../styles/Theme";
-import babyFront from "/src/assets/images/image4.jpg";
-import babyBack from "/src/assets/images/registerimage.jpg";
+import babyFront from "/src/assets/images/image4.webp";
+import babyBack from "/src/assets/images/registerimage.webp";
 import { useHeartTrail } from "../styles/HeartTrail";
 
 const pastelColors = [colors.pinkmedium, colors.blue, colors.purpledark];
@@ -75,7 +75,7 @@ const StorySection: React.FC = () => {
           {/* Heart Badge */}
           <div
             className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-20 h-8 bg-pink-500 text-white text-xs font-semibold rounded-full shadow-lg animate-bounce"
-            style={{ fontFamily: fonts.body, backgroundColor: colors.pinkdark }}
+            style={{ fontFamily: fonts.body, backgroundColor: colors.purpledark, }}
           >
             ❤️ Click Me
           </div>
