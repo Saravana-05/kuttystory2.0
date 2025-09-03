@@ -5,14 +5,13 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-const ScrollToHashElement = lazy(() => import("./styles/ScrollToHashElement"));
-
+import Header from "./components/Header";
+import ScrollToHashElement from "./styles/ScrollToHashElement";
+import Home from "./pages/Home";
 
 // ✅ Lazy load components/pages
-const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const Login = lazy(() => import("./pages/Login"));
-const Header = lazy(() => import("./components/Header"));
 const PrivacyPolicy = lazy(() => import("./userapp/PrivacyPolicy"));
 const TermAndCondition = lazy(() => import("./userapp/TermAndCondition"));
 // const BabyFootprintTrail = lazy(() => import("./styles/BabyFootprintTrail")); // 👣

@@ -2,14 +2,16 @@ import React from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 import { motion } from "framer-motion";
-import { useHeartTrail } from "../styles/HeartTrail";
+// ✅ Removed useHeartTrail import
 
 // ✅ Import all images manually
-import imgsubscribe from "/src/assets/images/subscribebaby.jpg";
-import parentcam from "/src/assets/images/parentcam.jpg";
-import image3 from "/src/assets/images/image4.jpg";
-import angel from "/src/assets/images/angelbaby.jpg";
-import kuttybook from "/src/assets/images/bookheld.png";
+
+import imgsubscribe from "/src/assets/images/subscribebaby.webp";
+import parentcam from "/src/assets/images/parentcam.webp";
+import image3 from "/src/assets/images/image3.webp";
+import angel from "/src/assets/images/angelbaby.webp";
+import kuttybook from "/src/assets/images/bookheld.webp";
+
 
 const HowItWorks: React.FC = () => {
   const steps = [
@@ -49,13 +51,13 @@ const HowItWorks: React.FC = () => {
       emoji: "💜",
     },
   ];
-  const handleMouseMove = useHeartTrail();
+  // ✅ Removed handleMouseMove hook
 
   return (
     <section
       id="how-it-works"
       className="pt-6 pb-14 sm:pb-12 min-h-[80vh] relative overflow-x-hidden"
-      onMouseMove={handleMouseMove} // ✅ hooked up
+      // ✅ Removed onMouseMove event handler
       style={{
         backgroundColor: colors.cream,
         fontFamily: fonts.body,

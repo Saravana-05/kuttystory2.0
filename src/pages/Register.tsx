@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Eye, EyeOff, RefreshCw } from "lucide-react";
 import WaveFooter from "../components/WaveFooter";
 import { colors, fonts } from "../styles/Theme";
-import logo from "../assets/KuttyStory_logo.png";
+import logo from "../assets/KuttyStory_logo.webp";
 import Button from "../styles/Button";
-import baby from "../assets/images/registerimage.jpg";
+import baby from "../assets/images/registerimage.webp";
 
 type FormField = "name" | "email" | "phone";
 

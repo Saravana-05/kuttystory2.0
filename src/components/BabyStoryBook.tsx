@@ -3,7 +3,7 @@ import { BookOpen, Heart, Star } from "lucide-react";
 
 const BabyStory: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(
-    "https://kuttystory.com/media/album/001_Kutty_Story_Front_Cover_transparent.png"
+    "https://kuttystory.com/media/album/001_Kutty_Story_Front_Cover_transparent.webp"
   );
   const [isTransitioning, setIsTransitioning] = useState(false);
 

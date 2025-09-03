@@ -5,12 +5,12 @@ import FloatingBackground from "../styles/FloatingBackground";
 import { BabyIcons } from "./BabyIcons";
 import { colors, fonts } from "../styles/Theme";
 
-import babyApple from "../assets/images/babyapple.jpeg";
-import babySmile from "../assets/images/babysmile.jpg";
-import babyJ from "../assets/images/babyj.jpeg";
-import babyRainbow from "../assets/images/babyrainbow.jpeg";
-import babyPose from "../assets/images/babypose.jpg";
-import babyJingle from "../assets/images/babyjingle.jpg";
+import babyApple from "../assets/images/babyapple.webp";
+import babySmile from "../assets/images/babysmile.webp";
+import babyJ from "../assets/images/babyj.webp";
+import babyRainbow from "../assets/images/babyrainbow.webp";
+import babyPose from "../assets/images/image6.webp";
+import babyJingle from "../assets/images/babyjingle.webp";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },

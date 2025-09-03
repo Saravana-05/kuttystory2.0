@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
-import Logo from "../assets/KuttyStory_logo.png";
+import Logo from "../assets/KuttyStory_logo.webp";
 
 interface HeaderProps {
   onSidebarToggle: () => void;
