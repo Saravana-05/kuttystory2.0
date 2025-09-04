@@ -3,7 +3,7 @@ import { Check, Star, Gift, Crown, Diamond } from "lucide-react";
 import { colors, fonts } from "../styles/Theme"; // Adjust path as needed
 import Button from "../styles/Button";
 import FloatingBackground from "../styles/FloatingBackground";
-import { useHeartTrail } from "../styles/HeartTrail";
+// ✅ Removed useHeartTrail import
 import { motion } from "framer-motion";
 
 // import Sparkles from "../styles/sparkle";
@@ -86,7 +86,7 @@ const Package: React.FC = () => {
       price: "₹48470",
       originalPrice: "₹65500",
       description:
-        "Three baby photo shoots and your favorite memories combined into a premium album for your child’s first birthday.",
+        "Three baby photo shoots and your favorite memories combined into a premium album for your child's first birthday.",
       features: [
         "3 shoots for this pack",
         "Unlimited Memories with compressed images",
@@ -119,13 +119,13 @@ const Package: React.FC = () => {
       ? colors.cream
       : colors.blacks;
   };
-  const handleMouseMove = useHeartTrail();
+  // ✅ Removed handleMouseMove hook
 
   return (
     <section
       id="package"
       className="py-12 relative overflow-hidden "
-      onMouseMove={handleMouseMove} // ✅ hooked up
+      // ✅ Removed onMouseMove event handler
       style={{ backgroundColor: colors.pinkdull, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}

@@ -2,7 +2,7 @@ import React from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 import { motion } from "framer-motion";
-import { useHeartTrail } from "../styles/HeartTrail";
+// ✅ Removed useHeartTrail import
 
 // ✅ Import all images manually
 
@@ -51,13 +51,13 @@ const HowItWorks: React.FC = () => {
       emoji: "💜",
     },
   ];
-  const handleMouseMove = useHeartTrail();
+  // ✅ Removed handleMouseMove hook
 
   return (
     <section
       id="how-it-works"
       className="pt-6 pb-14 sm:pb-12 min-h-[80vh] relative overflow-x-hidden"
-      onMouseMove={handleMouseMove} // ✅ hooked up
+      // ✅ Removed onMouseMove event handler
       style={{
         backgroundColor: colors.cream,
         fontFamily: fonts.body,
@@ -192,20 +192,11 @@ const HowItWorks: React.FC = () => {
                     {step.title}
                   </h3>
                   <p
-                    className="text-base leading-relaxed mb-4"
+                    className="text-base leading-relaxed"
                     style={{ color: colors.blacks }}
                   >
                     {step.description}
                   </p>
-                  <div
-                    className="w-full h-2 rounded-full overflow-hidden"
-                    style={{ backgroundColor: colors.pinklight }}
-                  >
-                    <div
-                      className="h-full scale-x-75 group-hover:scale-x-100 transform origin-left transition-transform duration-1000"
-                      style={{ backgroundColor: colors.pinkdark }}
-                    ></div>
-                  </div>
                 </div>
               </div>
             </div>

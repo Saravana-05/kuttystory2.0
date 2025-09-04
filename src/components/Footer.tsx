@@ -164,9 +164,9 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
         .icon-marquee:hover {
           animation-play-state: paused;
           cursor: pointer;
+      }
 
         } 
-
       `}</style>
 
       <footer
@@ -361,15 +361,10 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
               {/* CONTACT/LOCATION - Conditional rendering based on branch */}
               <div className="footer-section flex flex-col items-center text-center sm:items-start sm:text-left space-y-4">
                 <h4
-                  className="text-lg font-semibold flex items-center"
+                  className="text-lg font-semibold"
                   style={{ color: colors.whites }}
                 >
                   {hasLocationData ? "LOCATION" : "CONTACT"}
-                  {selectedBranch && (
-                    <span className="selected-branch-indicator">
-                      {selectedBranch}
-                    </span>
-                  )}
                 </h4>
                 
                 <div className="space-y-4">
@@ -431,8 +426,6 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
               <p>
                 © 2025 All Rights Reserved | Powered by{" "}
                 <a
-                  target="_blank"
-                  rel="noopener noreferrer"
                   href="https://skylimitdigital.com/"
                   className="font-semibold hover-lift"
                   style={{ color: colors.pinkmedium }}

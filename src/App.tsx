@@ -9,9 +9,9 @@ import {
 // ✅ Import critical components directly (no lazy loading)
 import ScrollToHashElement from "./styles/ScrollToHashElement";
 import Header from "./components/Header";
+import Home from "./pages/Home";
 
 // ✅ Only lazy load pages/routes (not critical components)
-const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const Login = lazy(() => import("./pages/Login"));
 const PrivacyPolicy = lazy(() => import("./userapp/PrivacyPolicy"));

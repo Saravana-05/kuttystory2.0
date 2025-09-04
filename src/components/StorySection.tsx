@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { colors, fonts } from "../styles/Theme";
 import babyFront from "/src/assets/images/image4.webp";
 import babyBack from "/src/assets/images/registerimage.webp";
-import { useHeartTrail } from "../styles/HeartTrail";
+// ✅ Removed useHeartTrail import
 
 const pastelColors = [colors.pinkmedium, colors.blue, colors.purpledark];
 
@@ -21,13 +21,13 @@ const StorySection: React.FC = () => {
     setFlipped(!flipped);
   };
 
-  const handleMouseMove = useHeartTrail();
+  // ✅ Removed handleMouseMove hook
 
   return (
     <section
       className="relative z-15 pt-[90px] pb-16 overflow-hidden"
       style={{ backgroundColor: colors.pinkdull }}
-      onMouseMove={handleMouseMove}
+      // ✅ Removed onMouseMove event handler
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col md:flex-row items-center gap-12 relative z-10">
         {/* ── Left Content ── */}
@@ -75,7 +75,7 @@ const StorySection: React.FC = () => {
           {/* Heart Badge */}
           <div
             className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-20 h-8 bg-pink-500 text-white text-xs font-semibold rounded-full shadow-lg animate-bounce"
-            style={{ fontFamily: fonts.body, backgroundColor: colors.purpledark, }}
+            style={{ fontFamily: fonts.body, backgroundColor: colors.purpledark }}
           >
             ❤️ Click Me
           </div>
@@ -146,51 +146,6 @@ const StorySection: React.FC = () => {
         }
         .backface-hidden {
           backface-visibility: hidden;
-        }
-
-        .heart-trail {
-          position: fixed;
-          width: 12px;
-          height: 12px;
-          background: ${colors.pinkdark};
-          top: 0;
-          left: 0;
-          transform: rotate(45deg);
-          animation: floatHeart 1s ease-out forwards;
-          pointer-events: none;
-          z-index: 9999;
-          border-radius: 50% 50% 0 0;
-        }
-
-        .heart-trail::before,
-        .heart-trail::after {
-          content: "";
-          position: absolute;
-          width: 12px;
-          height: 12px;
-          background: ${colors.pinkdark};
-          border-radius: 50%;
-        }
-
-        .heart-trail::before {
-          top: -6px;
-          left: 0;
-        }
-
-        .heart-trail::after {
-          top: 0;
-          left: -6px;
-        }
-
-        @keyframes floatHeart {
-          0% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-30px) scale(0.8);
-          }
         }
 
         @keyframes snowfall {
