@@ -34,7 +34,7 @@ const BabyStory: React.FC = () => {
     setTimeout(() => {
       setSelectedImage(clickedImageUrl);
       setIsTransitioning(false);
-    }, 800);
+    }, 300);
   };
 
   return (
@@ -43,18 +43,6 @@ const BabyStory: React.FC = () => {
       className="py-20 relative overflow-hidden"
       style={{ backgroundColor: "rgba(249, 153, 183, 0.1)" }}
     >
-      {/* Funky Background Elements
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 right-20 text-5xl animate-bounce">
-          :books:
-        </div>
-        <div className="absolute bottom-20 left-10 text-4xl animate-pulse">
-          :sparkles:
-        </div>
-        <div className="absolute top-1/2 right-10 text-3xl animate-spin">
-          :art:
-        </div>
-      </div> */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -144,7 +132,8 @@ const BabyStory: React.FC = () => {
                   <img
                     src={selectedImage}
                     alt="Baby Story Book Cover"
-                    className={`w-full h-3/4 object-cover transition-all duration-800 ${
+                    decoding="async"
+                    className={`w-full h-3/4 object-cover transition-all duration-300 ${
                       isTransitioning
                         ? "opacity-0 scale-110 blur-sm"
                         : "opacity-100 scale-100 blur-0"
