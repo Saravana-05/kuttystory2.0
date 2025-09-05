@@ -144,7 +144,7 @@ const Hero: React.FC = () => {
             index === currentIndex ? "opacity-100 z-0" : "opacity-0"
           }`}
           loading={index === 0 ? "eager" : "lazy"}
-          fetchpriority={index === 0 ? "high" : "auto"}
+          fetchPriority={index === 0 ? "high" : "auto"}
           onLoad={index === 0 ? handleFirstImageLoad : undefined}
           style={{
             transition: index === currentIndex ? 'opacity 0.8s ease-in-out' : 'none',
