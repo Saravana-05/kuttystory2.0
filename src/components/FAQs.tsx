@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
+// import Sparkles from "../styles/sparkle";
+//import { useHeartTrail } from "../styles/HeartTrail";
 import { motion } from "framer-motion";
 
 const FAQs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  //const handleMouseMove = useHeartTrail();
 
   const faqs = [
     {
@@ -39,8 +42,11 @@ const FAQs: React.FC = () => {
     <section
       id="faqs"
       className="py-20 px-4 relative"
+      //onMouseMove={handleMouseMove}
       style={{ backgroundColor: colors.cream, fontFamily: fonts.body }}
     >
+      {/* <Sparkles /> */}
+
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h2
           className="text-4xl md:text-5xl font-bold mb-4"
@@ -54,48 +60,52 @@ const FAQs: React.FC = () => {
       </div>
 
       {/* FAQ List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
 
           return (
             <motion.div
               key={index}
-              className="relative flex flex-col"
+              className="relative h-full flex flex-col"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, amount: 0.2 }}
-              style={{ minHeight: '120px' }} // Set minimum height for consistency
             >
-              {/* Card Top */}
+              {/* Folder Top */}
               <div
                 className="relative z-10 cursor-pointer flex-shrink-0"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
               >
                 <div
-                  className="px-6 py-4 text-white font-medium border shadow-md h-20 flex items-center" // Fixed height for question section
+                  className="px-6 py-4 text-white font-medium border shadow-md min-h-[80px] flex items-center"
                   style={{
                     backgroundColor: colors.lightpurple,
                     borderColor: colors.pinkmedium,
                     clipPath:
-                      "polygon(0 0, 60px 0, 70px 10px, calc(100% - 12px) 10px, 100% 24px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)",
-                    borderTopRightRadius: 12,
-                    borderBottomRightRadius: 12,
+                      "polygon(0 0, 60px 0, 70px 10px, 100% 10px, 100% 100%, 0 100%)",
+                    borderBottom: isOpen
+                      ? "none"
+                      : `1px solid ${colors.purpledark}`,
+                    borderBottomLeftRadius: isOpen ? 0 : 12,
+                    borderBottomRightRadius: isOpen ? 0 : 12,
                     borderTopLeftRadius: 12,
-                    borderBottomLeftRadius: 0,
+                    borderTopRightRadius: 12,
                   }}
                 >
                   <div className="flex justify-between items-center w-full">
                     <span
-                      className="text-lg text-left leading-tight pr-4 flex-1" // Added flex-1 and padding-right for spacing
+                      className="text-lg text-left flex-1 pr-4"
                       style={{ fontFamily: fonts.heading }}
                     >
                       {faq.question}
                     </span>
                     <span className="text-2xl leading-none select-none flex-shrink-0">
                       {isOpen ? (
-                        <span className="transform rotate-45 inline-block">+</span>
+                        <span className="transform rotate-45 inline-block">
+                          +
+                        </span>
                       ) : (
                         <span>+</span>
                       )}
@@ -104,7 +114,7 @@ const FAQs: React.FC = () => {
                 </div>
               </div>
 
-              {/* Card Body */}
+              {/* Folder Body */}
               <div
                 className={`transition-all duration-500 overflow-hidden ${
                   isOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
@@ -112,14 +122,13 @@ const FAQs: React.FC = () => {
               >
                 <div
                   className="py-2 rounded-b-xl"
-                  style={{ backgroundColor: colors.pinkdark, borderRadius: 16 }}
+                  style={{ backgroundColor: colors.pinkdark }}
                 >
                   <div
-                    className="mx-3 mt-[-10px] mb-2 px-6 py-4 border shadow-md relative z-0 rounded-xl min-h-[80px] flex items-center" // Fixed minimum height for answer section
+                    className="mx-3 mt-[-10px] mb-2 px-6 py-4 border shadow-md rounded-b-lg relative z-0"
                     style={{
                       backgroundColor: colors.whites,
                       borderColor: colors.blue,
-                      borderRadius: 16,
                     }}
                   >
                     <p
