@@ -46,8 +46,6 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
     { name: "ALBUM", hash: "#album" },
     { name: "GALLERY", hash: "#gallery" },
     { name: "PACKAGE", hash: "#package" },
-    { name: "FAQS", hash: "#faqs" },
-    { name: "BLOG", hash: "#blog" },
     { name: "BRANCH", hash: "#" },
     { name: "STUDIO", href: "https://store.kuttystory.com/user/login" },
   ];

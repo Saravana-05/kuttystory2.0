@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react";
-import WaveFooter from "../components/WaveFooter";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
-import logo from "../assets/KuttyStory_logo.png"; // update path if needed
+import logo from "../assets/KuttyStory_logo.png";
 import baby from "../assets/images/kuttystory.jpg";
 import Button from "../styles/Button";
 
@@ -24,146 +23,179 @@ const Login: React.FC = () => {
   };
 
   return (
-    <>
+    <section style={{ fontFamily: fonts.body }} className="min-h-screen">
+      {/* Top Navigation */}
+      <nav 
+        className="w-full px-4 sm:px-6 lg:px-8 py-4 border-b"
+        style={{ 
+          backgroundColor: colors.whites,
+          borderColor: `${colors.pinkmedium}30`
+        }}
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-50"
+            style={{ color: colors.purpledark }}
+          >
+            <ArrowLeft className="h-5 w-5" />
+            <span className="font-medium hidden sm:inline">Back to Home</span>
+            <span className="font-medium sm:hidden">Back</span>
+          </Link>
+          <Link to="/" className="flex-shrink-0">
+            <img
+              src={logo}
+              alt="Kutty Story Logo"
+              title="Meet the Team Behind Kuttystory photography"
+              className="h-8 sm:h-10 w-auto"
+            />
+          </Link>
+        </div>
+      </nav>
+
+      {/* Main Content */}
       <div
-        className="min-h-screen pt-20 flex items-center justify-center p-4"
-        style={{ backgroundColor: `${colors.pinkmedium}1A` }}
+        className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8"
+        style={{ backgroundColor: `${colors.pinkmedium}0D` }}
       >
         <div
-          className="max-w-6xl w-full backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-4"
+          className="w-full max-w-6xl backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden border-2"
           style={{
-            backgroundColor: `${colors.whites}E6`, // ~90% opacity
-            borderColor: colors.pinkmedium,
-            fontFamily: fonts.body,
+            backgroundColor: `${colors.whites}F0`,
+            borderColor: `${colors.pinkmedium}40`,
           }}
         >
-          <div className="grid lg:grid-cols-2 gap-0">
+          <div className="grid lg:grid-cols-2">
             {/* Left - Form */}
-            <div className="p-8 lg:p-12">
-              <div className="max-w-md mx-auto text-center mb-8">
-                <Link to="/" className="inline-block mb-6">
-                  <img
-                    src={logo}
-                    alt="Kutty Story Logo"
-                    title="Meet the Team Behind Kuttystory photography"
-                    className="h-20 w-auto mx-auto"
-                  />
-                </Link>
-                <h1
-                  className="text-3xl font-bold mb-2"
-                  style={{
-                    color: colors.purpledark,
-                    fontFamily: fonts.heading,
-                  }}
-                >
-                  LOGIN
-                </h1>
-                <p style={{ color: colors.lightmauve }}>
-                  Welcome back to your story ✨
-                </p>
-              </div>
+            <div className="p-6 sm:p-8 lg:p-12 order-2 lg:order-1">
+              <div className="max-w-md mx-auto">
+                <div className="text-center mb-8 sm:mb-10">
+                  <div className="mb-6">
+                    <img
+                      src={logo}
+                      alt="Kutty Story Logo"
+                      title="Meet the Team Behind Kuttystory photography"
+                      className="h-16 sm:h-20 w-auto mx-auto"
+                    />
+                  </div>
+                  <h1
+                    className="text-2xl sm:text-3xl font-bold mb-2"
+                    style={{
+                      color: colors.purpledark,
+                      fontFamily: fonts.heading,
+                    }}
+                  >
+                    LOGIN
+                  </h1>
+                  <p className="text-sm sm:text-base" style={{ color: colors.lightmauve }}>
+                    Welcome back to your story ✨
+                  </p>
+                </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border-2 outline-none transition-all duration-200"
-                  style={{
-                    borderColor: colors.pinkmedium,
-                    backgroundColor: colors.whites,
-                  }}
-                />
-
-                <div className="relative">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                   <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 outline-none transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-xl border-2 outline-none transition-all duration-200 focus:border-opacity-80"
                     style={{
                       borderColor: colors.pinkmedium,
                       backgroundColor: colors.whites,
                     }}
                   />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 transition-colors duration-200"
-                    style={{ color: colors.purpledark }}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-5 w-5" />
-                    ) : (
-                      <Eye className="h-5 w-5" />
-                    )}
-                  </button>
-                </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
+                  <div className="relative">
                     <input
-                      type="checkbox"
-                      id="showPasswordLogin"
-                      checked={showPassword}
-                      onChange={() => setShowPassword(!showPassword)}
-                      className="rounded"
-                      style={{ accentColor: colors.pinkmedium }}
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 pr-12 rounded-xl border-2 outline-none transition-all duration-200 focus:border-opacity-80"
+                      style={{
+                        borderColor: colors.pinkmedium,
+                        backgroundColor: colors.whites,
+                      }}
                     />
-                    <label
-                      htmlFor="showPasswordLogin"
-                      className="text-sm"
-                      style={{ color: colors.lightmauve }}
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 transition-colors duration-200"
+                      style={{ color: colors.purpledark }}
                     >
-                      Show password
-                    </label>
+                      {showPassword ? (
+                        <EyeOff className="h-5 w-5" />
+                      ) : (
+                        <Eye className="h-5 w-5" />
+                      )}
+                    </button>
                   </div>
-                  <Link
-                    to="/forgot-password"
-                    className="text-sm hover:scale-105 transform transition-all duration-200"
-                    style={{ color: colors.purpledark }}
-                  >
-                    Forgot Password!
-                  </Link>
-                </div>
 
-                <Button
-                  type="submit"
-                  className="w-full py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                >
-                  Login
-                </Button>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        id="showPasswordLogin"
+                        checked={showPassword}
+                        onChange={() => setShowPassword(!showPassword)}
+                        className="rounded"
+                        style={{ accentColor: colors.pinkmedium }}
+                      />
+                      <label
+                        htmlFor="showPasswordLogin"
+                        className="text-xs sm:text-sm"
+                        style={{ color: colors.lightmauve }}
+                      >
+                        Show password
+                      </label>
+                    </div>
+                    <Link
+                      to="/forgot-password"
+                      className="text-xs sm:text-sm underline decoration-2 underline-offset-2 transition-colors duration-200 hover:opacity-80"
+                      style={{ color: colors.purpledark }}
+                    >
+                      Forgot Password!
+                    </Link>
+                  </div>
 
-                <div className="text-center">
-                  <span style={{ color: colors.lightmauve }}>
-                    Need an account?{" "}
-                  </span>
-                  <Link
-                    to="/register"
-                    className="font-semibold hover:scale-105 transform inline-block transition-all duration-200"
-                    style={{ color: colors.purpledark }}
-                  >
-                    Register Here
-                  </Link>
-                </div>
-              </form>
+                  <div className="pt-4">
+                    <Button
+                      type="submit"
+                      className="w-full py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                      Login
+                    </Button>
+                  </div>
+
+                  <div className="text-center pt-2">
+                    <span className="text-sm sm:text-base" style={{ color: colors.lightmauve }}>
+                      Need an account?{" "}
+                    </span>
+                    <Link
+                      to="/register"
+                      className="font-semibold text-sm sm:text-base underline decoration-2 underline-offset-2 transition-colors duration-200 hover:opacity-80"
+                      style={{ color: colors.purpledark }}
+                    >
+                      Register Here
+                    </Link>
+                  </div>
+                </form>
+              </div>
             </div>
 
             {/* Right - Illustration */}
             <div
-              className="p-8 lg:p-12 flex items-center justify-center"
+              className="p-6 sm:p-8 lg:p-12 flex items-center justify-center order-1 lg:order-2 min-h-[300px] sm:min-h-[400px] lg:min-h-0"
               style={{
                 background: colors.pinkdull,
               }}
             >
-              <div className="text-center">
-                <div className="w-80 h-80 mx-auto mb-6 relative">
+              <div className="text-center max-w-sm">
+                <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto mb-4 sm:mb-6 relative">
                   <div
                     className="absolute inset-0 rounded-full opacity-20"
                     style={{
@@ -174,12 +206,12 @@ const Login: React.FC = () => {
                     src={baby}
                     alt="Family photography illustration"
                     title="baby photography Chennai, Dindigul"
-                    className="w-full h-full object-cover rounded-full border-8 shadow-2xl"
+                    className="w-full h-full object-cover rounded-full border-4 sm:border-8 shadow-xl"
                     style={{ borderColor: colors.cream }}
                   />
                 </div>
                 <h2
-                  className="text-2xl font-bold mb-4"
+                  className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4"
                   style={{
                     color: colors.purpledark,
                     fontFamily: fonts.heading,
@@ -187,7 +219,7 @@ const Login: React.FC = () => {
                 >
                   Welcome Back
                 </h2>
-                <p className="text-lg" style={{ color: colors.lightmauve }}>
+                <p className="text-base sm:text-lg" style={{ color: colors.lightmauve }}>
                   Continue your beautiful journey with us ✨
                 </p>
               </div>
@@ -195,8 +227,7 @@ const Login: React.FC = () => {
           </div>
         </div>
       </div>
-      <WaveFooter />
-    </>
+    </section>
   );
 };
 

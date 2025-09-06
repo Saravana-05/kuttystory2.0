@@ -3,7 +3,7 @@ import { Check, Star, Gift, Crown, Diamond } from "lucide-react";
 import { colors, fonts } from "../styles/Theme"; // Adjust path as needed
 import Button from "../styles/Button";
 import FloatingBackground from "../styles/FloatingBackground";
-// ✅ Removed useHeartTrail import
+//import { useHeartTrail } from "../styles/HeartTrail";
 import { motion } from "framer-motion";
 
 // import Sparkles from "../styles/sparkle";
@@ -38,8 +38,8 @@ const Package: React.FC = () => {
         "High Resolution Image Storage Upto 3 GB for 5 Years Validity",
         "No Album",
       ],
-      solidColor: colors.greys,
-      lightColor: colors.cream,
+      solidColor: colors.gold,
+      lightColor: colors.white,
       popularBadge: false,
       tier: "starter",
     },
@@ -57,8 +57,8 @@ const Package: React.FC = () => {
         "12x10 Inches 60 Pages Album",
       ],
 
-      solidColor: colors.pinkdull,
-      lightColor: colors.pinkmedium,
+      solidColor: colors.darkGold,
+      lightColor: colors.white,
       popularBadge: false,
       tier: "premium",
     },
@@ -66,7 +66,7 @@ const Package: React.FC = () => {
       name: "GOLD",
       icon: Crown,
       price: "₹18675",
-      originalPrice: "₹22000",
+      originalPrice: "₹22500",
       description:
         "One professional baby shoot plus your uploaded memories, all compiled into a high-quality photo album for your baby's first birthday.",
       features: [
@@ -76,7 +76,7 @@ const Package: React.FC = () => {
         "12x10 Inches 60 Pages Album",
       ],
       solidColor: colors.pinkdark,
-      lightColor: colors.pinkhome,
+      lightColor: colors.white,
       popularBadge: true,
       tier: "luxury",
     },
@@ -86,14 +86,14 @@ const Package: React.FC = () => {
       price: "₹48470",
       originalPrice: "₹65500",
       description:
-        "Three baby photo shoots and your favorite memories combined into a premium album for your child's first birthday.",
+        "Three baby photo shoots and your favorite memories combined into a premium album for your child’s first birthday.",
       features: [
         "3 shoots for this pack",
         "Unlimited Memories with compressed images",
         "High Resolution Image Storage Upto 20 GB for 25 Years Validity",
       ],
       solidColor: colors.pinkhome,
-      lightColor: colors.lightmauve,
+      lightColor: colors.white,
       popularBadge: false,
       tier: "ultimate",
     },
@@ -116,16 +116,16 @@ const Package: React.FC = () => {
 
   const getTextColor = (tier: string) => {
     return tier === "luxury" || tier === "ultimate"
-      ? colors.cream
+      ? colors.blacks
       : colors.blacks;
   };
-  // ✅ Removed handleMouseMove hook
+  //const handleMouseMove = useHeartTrail();
 
   return (
     <section
       id="package"
       className="py-12 relative overflow-hidden "
-      // ✅ Removed onMouseMove event handler
+     // onMouseMove={handleMouseMove} // ✅ hooked up
       style={{ backgroundColor: colors.pinkdull, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}

@@ -15,64 +15,67 @@ const colors = {
   pinkhome: "#b86c78",
   babypink: "#F999B7",
   forr: "#a24d59ff",
+  gold: "#FFD700",       // ✨ Added gold color
+  darkGold: "#C9A100",  
+  white:"#fafafa" // darker gold for hover
 };
 
 const fonts = {
-heading: "'Work Sans Extralight', cursive",
+  heading: "'Work Sans Extralight', cursive",
   body: "'Work Sans'",
 };
 
 const buttons = {
   starter: {
     className:
-      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full border border-500",
+      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full",
     baseStyle: {
-      backgroundColor: colors.greys, // Light Pink
-      color: colors.whites, // Dark Purple
+      backgroundColor: colors.gold, // ✨ Gold base
+      color: colors.blacks,
       fontFamily: fonts.heading,
     },
     hoverStyle: {
-      backgroundColor: colors.pinkmedium, // Brighter Pink
-      color: colors.purpledark,
+      backgroundColor: colors.darkGold, // ✨ Darker gold hover
+      color: colors.blacks,
     },
   },
   premium: {
     className:
-      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full border border-500",
+      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full",
     baseStyle: {
-      backgroundColor: colors.forr, // Pastel Purple
-      color: colors.cream,
+      backgroundColor: colors.gold,
+      color: colors.blacks,
       fontFamily: fonts.heading,
     },
     hoverStyle: {
-      backgroundColor: colors.pinkmedium,
-      color: colors.purpledark,
+      backgroundColor: colors.darkGold,
+      color: colors.blacks,
     },
   },
   luxury: {
     className:
-      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full border border-500",
+      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full",
     baseStyle: {
-      backgroundColor: colors.lightmauve, // Light Pink
-      color: colors.cream, // Dark Purple
+      backgroundColor: colors.gold,
+      color: colors.blacks,
       fontFamily: fonts.heading,
     },
     hoverStyle: {
-      backgroundColor: colors.pinkmedium,
-      color: colors.purpledark,
+      backgroundColor: colors.darkGold,
+      color: colors.blacks,
     },
   },
   ultimate: {
     className:
-      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full border border-500",
+      "transition-all transform hover:scale-105 text-md font-medium shadow-lg px-6 py-2 rounded-full",
     baseStyle: {
-      backgroundColor: colors.mauve, // Pastel Purple
-      color: colors.cream,
+      backgroundColor: colors.gold,
+      color: colors.blacks,
       fontFamily: fonts.heading,
     },
     hoverStyle: {
-      backgroundColor: colors.pinkmedium,
-      color: colors.purpledark,
+      backgroundColor: colors.darkGold,
+      color: colors.blacks,
     },
   },
   cta: {

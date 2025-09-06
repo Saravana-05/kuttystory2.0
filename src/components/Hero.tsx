@@ -4,10 +4,10 @@ import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 
 // 📸 Import Hero Images
-import babyRed from "../assets/images/babyred.avif";
-import babyPink from "../assets/images/babypink.webp";
-import babyMurugan from "../assets/images/ks2.webp";
-import babyKrish from "../assets/images/babykrish.webp";
+import babyRed from "../assets/images/kuttystorybabyphoto.jpg";
+import babyPink from "../assets/images/kuttystorybabyshoot.jpg";
+import babyMurugan from "../assets/images/kuttystorythemes.jpeg";
+import babyKrish from "../assets/images/babyshoot.jpeg"
 
 const heroImages = [
   {
@@ -159,7 +159,7 @@ const Hero: React.FC = () => {
       {sparkles}
 
       {/* Text + CTA - Responsive layout with proper spacing for controls */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-16 sm:px-20 md:px-24 lg:px-32 text-white flex flex-col justify-center items-start text-left">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-16 sm:px-20 md:px-24 lg:px-32 text-white flex flex-col justify-center items-start text-left" style={{ marginTop: '-8vh' }}>
         <div
           key={currentIndex}
           className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl space-y-3 sm:space-y-4"
@@ -177,7 +177,7 @@ const Hero: React.FC = () => {
             {heroImages[currentIndex].caption}
           </div>
 
-          {/* Subtext */}
+          {/* Subtext - Updated with smaller text sizes */}
           <div
             className="py-4 sm:py-5 md:py-6 px-3 sm:px-4 rounded-lg shadow-md"
             style={{ backgroundColor: "rgba(72, 37, 52, 0.35)" }}
@@ -186,8 +186,8 @@ const Hero: React.FC = () => {
               className="leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
               style={{
                 fontFamily: fonts.heading,
-                fontSize: "clamp(1.2rem, 3.5vw, 3.75rem)",
-                lineHeight: "1.2",
+                fontSize: "clamp(1rem, 2.5vw, 2rem)", // Reduced from clamp(1.2rem, 3.5vw, 3.75rem)
+                lineHeight: "1.3", // Slightly increased line height for better readability
               }}
             >
               {heroImages[currentIndex].subtext}

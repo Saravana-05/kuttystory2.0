@@ -5,7 +5,6 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaPinterest} from "react-icons/fa6";
 import { FaWhatsapp} from "react-icons/fa6";
-import {  FaYoutube,} from "react-icons/fa6";
 
 import { colors, fonts } from "../styles/Theme";
 
@@ -333,27 +332,6 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
                         kuttystory
                       </span>
                     </div>
-
-                    <a
-                      href="https://www.youtube.com/channel/UCUXYslaWuY2VXbZ71V925Hw"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div className="app-item flex items-center justify-center sm:justify-start space-x-3">
-                        <div
-                          className="rounded p-2 shadow"
-                          style={{ backgroundColor: colors.pinkmedium }}
-                        >
-                          <FaYoutube size={18} color={colors.whites} />
-                        </div>
-                        <span
-                          className="text-sm "
-                          style={{ color: `${colors.whites}cc` }}
-                        >
-                          YouTube
-                        </span>
-                      </div>
-                    </a>
                   </div>
                 </div>
               </div>
