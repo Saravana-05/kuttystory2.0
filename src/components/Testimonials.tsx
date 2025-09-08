@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Star,
   Heart,
@@ -18,9 +18,12 @@ import image6 from "/src/assets/images/image6.webp";
 import image7 from "/src/assets/images/image7.webp";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
+
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const cardRefs = useRef([]);
 
   const testimonials = [
     {
@@ -74,6 +77,26 @@ const Testimonials = () => {
       icon: <Star className="h-6 w-6" />,
     },
   ];
+
+  // Calculate the maximum height needed
+  useEffect(() => {
+    const calculateMaxHeight = () => {
+      let maxH = 0;
+      cardRefs.current.forEach((ref) => {
+        if (ref) {
+          const height = ref.scrollHeight;
+          if (height > maxH) {
+            maxH = height;
+          }
+        }
+      });
+      setMaxHeight(maxH);
+    };
+
+    // Small delay to ensure content is rendered
+    const timer = setTimeout(calculateMaxHeight, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!isHovering) {
@@ -135,7 +158,7 @@ const Testimonials = () => {
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2
+          <h4
             className="text-4xl font-bold leading-snug"
             style={{ color: colors.purpledark, fontFamily: fonts.heading }}
           >
@@ -147,7 +170,7 @@ const Testimonials = () => {
               {" "}
               ❤
             </span>
-          </h2>
+          </h4>
           <p
             className="text-lg max-w-3xl mx-auto mt-4 font-medium"
             style={{ color: colors.purpledark }}
@@ -156,29 +179,61 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonial Card */}
+        {/* Hidden cards for height calculation */}
+        <div className="invisible absolute -z-10 pointer-events-none">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={`calc-${index}`}
+              ref={(el) => (cardRefs.current[index] = el)}
+              className="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 mb-4"
+              style={{ width: '100%', maxWidth: '1152px' }} // Match container width
+            >
+              <div className="h-2 w-full mb-6 rounded-full" />
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-shrink-0">
+                  <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-xl" />
+                </div>
+                <div className="text-center md:text-left flex-1">
+                  <div className="w-6 h-6 mb-4" />
+                  <p className="italic text-gray-700 text-base sm:text-lg mb-6">
+                    "{testimonial.text}"
+                  </p>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {testimonial.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-2">{testimonial.role}</p>
+                  <div className="flex justify-center md:justify-start">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Visible Testimonial Card with fixed height */}
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }} // triggers every time it scrolls into view
-          className="relative bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 transition-all duration-300"
+          viewport={{ once: false, amount: 0.3 }}
+          className="relative bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 transition-all duration-300 flex flex-col"
+          style={{
+            minHeight: maxHeight > 0 ? `${maxHeight}px` : 'auto',
+          }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          {/* <div
-            className="relative bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 transition-all duration-300"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          > */}
           {/* Top Bar */}
           <div
             className="h-2 w-full mb-6 rounded-full"
             style={{ backgroundColor: colors.pinkmedium }}
           />
 
-          {/* Content */}
-          <div className="flex flex-col md:flex-row items-center gap-8">
+          {/* Content - Centered vertically */}
+          <div className="flex flex-col md:flex-row items-center gap-8 flex-1 justify-center">
             {/* Image */}
             <div className="flex-shrink-0">
               <img
@@ -189,13 +244,13 @@ const Testimonials = () => {
             </div>
 
             {/* Text */}
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left flex-1 flex flex-col justify-center">
               <Quote
                 className="w-6 h-6 mb-4 mx-auto md:mx-0"
                 style={{ color: colors.pinkmedium }}
               />
               <p className="italic text-gray-700 text-base sm:text-lg mb-6">
-                “{currentTest.text}”
+                "{currentTest.text}"
               </p>
               <h3 className="text-xl font-bold text-gray-900">
                 {currentTest.name}
@@ -232,7 +287,7 @@ const Testimonials = () => {
                   : currentTestimonial - 1
               )
             }
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:scale-110 transition"
+            className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:scale-110 transition z-10"
           >
             <ChevronLeft style={{ color: colors.pinkmedium }} />
           </button>
@@ -245,11 +300,10 @@ const Testimonials = () => {
                   : currentTestimonial + 1
               )
             }
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:scale-110 transition"
+            className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:scale-110 transition z-10"
           >
             <ChevronRight style={{ color: colors.pinkmedium }} />
           </button>
-          {/* </div> */}
         </motion.div>
 
         {/* Dot Indicators */}

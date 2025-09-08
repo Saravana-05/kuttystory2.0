@@ -55,6 +55,37 @@ const Gallery = () => {
   };
 
   const ImageBox = ({ image, classes }) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+
+    const handleImageLoad = (e) => {
+      setImageDimensions({
+        width: e.target.naturalWidth,
+        height: e.target.naturalHeight
+      });
+      setImageLoaded(true);
+    };
+
+    // Smart positioning for face detection - prioritizes upper center area where faces usually are
+    const getSmartObjectPosition = () => {
+      if (!imageLoaded) return 'center';
+      
+      const aspectRatio = imageDimensions.width / imageDimensions.height;
+      
+      // For portrait images (likely to have faces), focus on upper-center
+      if (aspectRatio < 1) {
+        return 'center 25%'; // Focus on upper portion where faces typically are
+      }
+      // For landscape images, focus on center-left or center-right alternately
+      else if (aspectRatio > 1.3) {
+        return 'center 40%'; // Slightly upper center for landscapes
+      }
+      // For square-ish images, use center
+      else {
+        return 'center 30%'; // Slightly upper center
+      }
+    };
+
     if (!image || !image.url) {
       return (
         <div className={`${classes} bg-gray-200 rounded-2xl flex items-center justify-center`}>
@@ -73,8 +104,19 @@ const Gallery = () => {
             src={image.url}
             alt={image.alt}
             loading="lazy"
+            onLoad={handleImageLoad}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            style={{ 
+              objectPosition: getSmartObjectPosition(),
+              opacity: imageLoaded ? 1 : 0,
+              transition: 'opacity 0.3s ease-in-out'
+            }}
           />
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-pulse bg-gray-300 w-full h-full rounded-2xl"></div>
+            </div>
+          )}
         </div>
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -109,12 +151,12 @@ const Gallery = () => {
         <div className="pb-1 pt-8 sm:pb-12 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2
+              <h4
                 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 mt-0 leading-snug"
                 style={{ color: colors.purpledark, fontFamily: fonts.heading }}
               >
                 Gallery
-              </h2>
+              </h4>
               <p
                 className="text-lg max-w-3xl mx-auto font-medium"
                 style={{ color: colors.purpledark }}

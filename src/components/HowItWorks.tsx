@@ -68,7 +68,7 @@ const HowItWorks: React.FC = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2
+          <h4
             className="text-4xl md:text-5xl font-bold mb-6 mt-10 leading-snug"
             style={{
               color: colors.purpledark,
@@ -76,7 +76,7 @@ const HowItWorks: React.FC = () => {
             }}
           >
             How It Works
-          </h2>
+          </h4>
           <p
             className="text-lg  max-w-3xl mx-auto leading-relaxed px-4 font-medium"
             style={{ color: colors.purpledark }}

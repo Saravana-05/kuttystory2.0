@@ -4,17 +4,17 @@ import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 
 // 📸 Import Hero Images
-import babyRed from "../assets/images/kuttystorybabyphoto.jpg";
-import babyPink from "../assets/images/kuttystorybabyshoot.jpg";
-import babyMurugan from "../assets/images/kuttystorythemes.jpeg";
-import babyKrish from "../assets/images/babyshoot.jpeg"
+import babyRed from "../assets/images/bluebaby.jpg";
+import babyPink from "../assets/images/babyheader.jpg";
+import babyMurugan from "../assets/images/murganbaby.jpg";
+import babyKrish from "../assets/images/little_krishna.jpg"
 
 const heroImages = [
   {
     url: babyRed,
     caption: "Sunshine in Tiny Toes",
     subtext:
-      "Wrapped in red and wonder, he meets the world with sun-kissed cheeks and sparkly eyes.",
+      "In the gentle embrace of dreams, he rests with innocence, a tiny heart glowing beside his furry friend.",
   },
   {
     url: babyPink,

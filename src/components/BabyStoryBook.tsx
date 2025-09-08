@@ -48,12 +48,12 @@ const BabyStory: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            <h2
+            <h4
               className="text-4xl font-bold mb-6 animate-pulse"
               style={{ color: "#4a1c40" }}
             >
               BABY'S STORY BOOK :book:
-            </h2>
+            </h4>
             <p
               className="text-lg mb-8 leading-relaxed"
               style={{ color: "#3f0968" }}

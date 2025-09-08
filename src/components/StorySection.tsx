@@ -32,12 +32,12 @@ const StorySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col md:flex-row items-center gap-12 relative z-10">
         {/* ── Left Content ── */}
         <div className="md:w-1/2 text-left pr-6">
-          <h2
+          <h4
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-snug"
             style={{ color: colors.purpledark, fontFamily: fonts.heading }}
           >
             A Story That Should Be Told
-          </h2>
+          </h4>
           <p
             className="text-base sm:text-lg leading-relaxed text-justify"
             style={{ color: colors.mauve }}
