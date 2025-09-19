@@ -93,9 +93,7 @@ const Hero: React.FC = () => {
   // ✨ Sparkles - Only render after images load
   const sparkles = useMemo(
     () =>
-
       isLoaded ? Array.from({ length: 10 }).map((_, i) => {
-
         const color =
           pastelColors[Math.floor(Math.random() * pastelColors.length)];
         const left = Math.random() * 100;
@@ -141,7 +139,6 @@ const Hero: React.FC = () => {
         style={{ background: colors.blacks }}
       />
 
-
       {/* Background Images - Optimized */}
       {heroImages.map((image, index) => (
         <img
@@ -162,7 +159,6 @@ const Hero: React.FC = () => {
         />
       ))}
       <div className="absolute inset-0 bg-pink/20" />
-
 
       {/* Sparkles - Only render when loaded */}
       {sparkles}
@@ -288,12 +284,13 @@ const Hero: React.FC = () => {
         >
           <img
             src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
+
             alt="Get KuttyStory app on Google Play"
             title="KuttyStory App - Google Play Store"
 
+
             className="w-[100px] sm:w-[130px] md:w-[150px] lg:w-[161px] transition-transform duration-200 hover:scale-105"
             loading="lazy"
-
           />
         </a>
       </div>

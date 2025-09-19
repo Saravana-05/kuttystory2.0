@@ -25,7 +25,7 @@ const Testimonials = () => {
   const [maxHeight, setMaxHeight] = useState(0);
   const cardRefs = useRef([]);
 
-  const testimonials = [
+    const testimonials = [
     {
       name: "Shilpa germaine alfred",
       role: "New Mom",
@@ -78,6 +78,7 @@ const Testimonials = () => {
     },
   ];
 
+
   // Calculate the maximum height needed
   useEffect(() => {
     const calculateMaxHeight = () => {
@@ -108,6 +109,7 @@ const Testimonials = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
 
   useEffect(() => {
     if (!isHovering) {
