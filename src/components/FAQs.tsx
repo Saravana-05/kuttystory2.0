@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 // import Sparkles from "../styles/sparkle";
-// ✅ Removed useHeartTrail import
-import { motion } from "framer-motion";
+
+//import { useHeartTrail } from "../styles/HeartTrail";
+
+
 
 const FAQs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  // ✅ Removed handleMouseMove hook
+
 
   const faqs = [
     {
@@ -42,7 +44,7 @@ const FAQs: React.FC = () => {
     <section
       id="faqs"
       className="py-20 px-4 relative"
-      // ✅ Removed onMouseMove event handler
+
       style={{ backgroundColor: colors.cream, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}
@@ -59,53 +61,56 @@ const FAQs: React.FC = () => {
         </p>
       </div>
 
-      {/* FAQ List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      {/* FAQ List - Modified grid gap and card sizing */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
 
           return (
             <motion.div
-              key={index}
-              className="relative"
+              key={`faq-${index}`}
+              className="relative h-full flex flex-col w-full"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              {/* Folder Top */}
+              {/* Folder Top - Consistent styling for all cards */}
               <div
-                className="relative z-10 cursor-pointer"
+                className="relative z-10 cursor-pointer flex-shrink-0 w-full"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
               >
                 <div
-                  className="px-6 py-4 text-white font-medium border shadow-md"
+                  className="w-full px-8 py-6 text-white font-medium border shadow-md flex items-center"
                   style={{
                     backgroundColor: colors.lightpurple,
                     borderColor: colors.pinkmedium,
-                    clipPath:
-                      "polygon(0 0, 60px 0, 70px 10px, 100% 10px, 100% 100%, 0 100%)",
-                    borderBottom: isOpen
-                      ? "none"
-                      : `1px solid ${colors.purpledark}`,
+                    clipPath: "polygon(8px 0, 48px 0, 56px 8px, calc(100% - 8px) 8px, 100% 16px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)",
+                    borderBottom: isOpen ? "none" : `1px solid ${colors.purpledark}`,
                     borderBottomLeftRadius: isOpen ? 0 : 12,
                     borderBottomRightRadius: isOpen ? 0 : 12,
                     borderTopLeftRadius: 12,
                     borderTopRightRadius: 12,
+                    minHeight: '120px', // Using inline style to ensure consistency
                   }}
                 >
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center w-full">
                     <span
-                      className="text-lg text-left"
-                      style={{ fontFamily: fonts.heading }}
+                      className="text-left flex-1 pr-4"
+                      style={{ 
+                        fontFamily: fonts.heading,
+                        fontSize: '1.25rem', // 20px equivalent to text-xl
+                        lineHeight: '1.6',
+                      }}
                     >
                       {faq.question}
                     </span>
-                    <span className="text-2xl leading-none select-none">
+                    <span 
+                      className="leading-none select-none flex-shrink-0"
+                      style={{ fontSize: '1.875rem' }} // 30px equivalent to text-3xl
+                    >
                       {isOpen ? (
-                        <span className="transform rotate-45 inline-block">
-                          +
-                        </span>
+                        <span className="transform rotate-45 inline-block">+</span>
                       ) : (
                         <span>+</span>
                       )}
@@ -114,28 +119,40 @@ const FAQs: React.FC = () => {
                 </div>
               </div>
 
-              {/* Folder Body */}
+              {/* Folder Body - Consistent sizing for all answer cards */}
               <div
-                className={`transition-all duration-500 overflow-hidden ${
-                  isOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
-                }`}
+                className="transition-all duration-500 overflow-hidden w-full"
+                style={{
+                  maxHeight: isOpen ? '180px' : '0px', // Fixed height based on second FAQ
+                  opacity: isOpen ? 1 : 0,
+                }}
               >
                 <div
-                  className="py-2 rounded-b-xl"
-                  style={{ backgroundColor: colors.pinkdark }}
+                  className="py-3 w-full"
+                  style={{ 
+                    backgroundColor: colors.pinkdark,
+                    height: '180px', // Fixed container height
+                    clipPath: "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)",
+                  }}
                 >
                   <div
-                    className="mx-3 mt-[-10px] mb-2 px-6 py-4 border shadow-md rounded-b-lg relative z-0"
+                    className="mx-4 mt-[-10px] mb-3 border shadow-md rounded-b-lg relative z-0"
                     style={{
                       backgroundColor: colors.whites,
                       borderColor: colors.blue,
+                      padding: '1.5rem 2rem',
+                      height: '132px', // Fixed height for answer card (180px - padding)
+                      display: 'flex',
+                      alignItems: 'flex-start',
                     }}
                   >
                     <p
-                      className="text-md leading-relaxed"
                       style={{
                         color: colors.blacks,
                         fontFamily: fonts.body,
+                        fontSize: '1.125rem',
+                        lineHeight: '1.6',
+                        margin: 0,
                       }}
                     >
                       {faq.answer}
@@ -176,6 +193,8 @@ const FAQs: React.FC = () => {
             <Button
               variant="cta"
               href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages."
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Contact us
             </Button>

@@ -4,35 +4,43 @@ import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 
 // 📸 Import Hero Images
-import babyRed from "../assets/images/babyred.avif";
-import babyPink from "../assets/images/babypink.webp";
-import babyMurugan from "../assets/images/ks2.webp";
-import babyKrish from "../assets/images/babykrish.webp";
+import babyRed from "../assets/images/bluebaby.webp";
+import babyPink from "../assets/images/babyheader.webp";
+import babyMurugan from "../assets/images/murganbaby.webp";
+import babyKrish from "../assets/images/little_krishna.webp"
 
 const heroImages = [
   {
     url: babyRed,
     caption: "Sunshine in Tiny Toes",
     subtext:
-      "Wrapped in red and wonder, he meets the world with sun-kissed cheeks and sparkly eyes.",
+      "In the gentle embrace of dreams, he rests with innocence, a tiny heart glowing beside his furry friend.",
+    alt: "Baby boy in blue with tiny toes and soft dreams",
+    title: "Sunshine in Tiny Toes - KuttyStory Baby Photography",
   },
   {
     url: babyPink,
     caption: "The Look That Stays Forever",
     subtext:
       "In her soft eyes, she gazes into your soul — a moment you'll hold forever.",
+    alt: "Baby girl in pink gazing softly with innocent eyes",
+    title: "The Look That Stays Forever - KuttyStory Baby Portrait",
   },
   {
     url: babyMurugan,
     caption: "Divine in Every Detail",
     subtext:
       "Draped in Murugan's charm, every smile feels sacred, every pose a blessing.",
+    alt: "Baby dressed as Lord Murugan with divine charm",
+    title: "Divine in Every Detail - KuttyStory Themed Baby Shoot",
   },
   {
     url: babyKrish,
     caption: "A Giggle from the Gods",
     subtext:
       "With a feathered crown and playful grin, he dances into your memories forever.",
+    alt: "Baby dressed as Little Krishna with a playful smile",
+    title: "A Giggle from the Gods - KuttyStory Krishna Baby Shoot",
   },
 ];
 
@@ -137,11 +145,12 @@ const Hero: React.FC = () => {
           key={index}
           src={image.url}
           alt={image.caption}
+          title={image.title}
           className={`absolute inset-0 w-full h-full object-cover ${
             index === currentIndex ? "opacity-100 z-0" : "opacity-0"
           }`}
           loading={index === 0 ? "eager" : "lazy"}
-          fetchpriority={index === 0 ? "high" : "auto"}
+          fetchPriority={index === 0 ? "high" : "auto"}
           onLoad={index === 0 ? handleFirstImageLoad : undefined}
           style={{
             transition: index === currentIndex ? 'opacity 0.8s ease-in-out' : 'none',
@@ -155,7 +164,7 @@ const Hero: React.FC = () => {
       {sparkles}
 
       {/* Text + CTA - Responsive layout with proper spacing for controls */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-16 sm:px-20 md:px-24 lg:px-32 text-white flex flex-col justify-center items-start text-left">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-16 sm:px-20 md:px-24 lg:px-32 text-white flex flex-col justify-center items-start text-left" style={{ marginTop: '-8vh' }}>
         <div
           key={currentIndex}
           className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl space-y-3 sm:space-y-4"
@@ -173,7 +182,7 @@ const Hero: React.FC = () => {
             {heroImages[currentIndex].caption}
           </div>
 
-          {/* Subtext */}
+          {/* Subtext - Updated with smaller text sizes */}
           <div
             className="py-4 sm:py-5 md:py-6 px-3 sm:px-4 rounded-lg shadow-md"
             style={{ backgroundColor: "rgba(72, 37, 52, 0.35)" }}
@@ -182,8 +191,8 @@ const Hero: React.FC = () => {
               className="leading-tight drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
               style={{
                 fontFamily: fonts.heading,
-                fontSize: "clamp(1.2rem, 3.5vw, 3.75rem)",
-                lineHeight: "1.2",
+                fontSize: "clamp(1rem, 2.5vw, 2rem)", // Reduced from clamp(1.2rem, 3.5vw, 3.75rem)
+                lineHeight: "1.3", // Slightly increased line height for better readability
               }}
             >
               {heroImages[currentIndex].subtext}
@@ -194,6 +203,7 @@ const Hero: React.FC = () => {
           <div className="pt-2 sm:pt-3">
             <Button
               to="/Register"
+              title="Book your KuttyStory baby photography session"
               className="inline-flex items-center px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
             >
               Book Your Session
@@ -206,6 +216,7 @@ const Hero: React.FC = () => {
       {/* Prev Button - Improved mobile positioning */}
       <button
         aria-label="Previous Slide"
+        title="Previous baby photo"
         onClick={() =>
           handleManualChange(
             (currentIndex - 1 + heroImages.length) % heroImages.length
@@ -226,6 +237,7 @@ const Hero: React.FC = () => {
       {/* Next Button - Improved mobile positioning */}
       <button
         aria-label="Next Slide"
+         title="Next baby photo"
         onClick={() =>
           handleManualChange((currentIndex + 1) % heroImages.length)
         }
@@ -267,11 +279,16 @@ const Hero: React.FC = () => {
           href="https://play.google.com/store/apps/details?id=com.skylimit.kuttystory"
           target="_blank"
           rel="noopener noreferrer"
+          title="Download KuttyStory app on Google Play"
           className="block"
         >
           <img
             src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
-            alt="Get it on Google Play"
+
+            alt="Get KuttyStory app on Google Play"
+            title="KuttyStory App - Google Play Store"
+
+
             className="w-[100px] sm:w-[130px] md:w-[150px] lg:w-[161px] transition-transform duration-200 hover:scale-105"
             loading="lazy"
           />

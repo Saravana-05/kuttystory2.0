@@ -1,6 +1,5 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
-
 import FloatingBackground from "../styles/FloatingBackground";
 import { BabyIcons } from "./BabyIcons";
 import { colors, fonts } from "../styles/Theme";
@@ -62,7 +61,7 @@ const YourStories = () => {
         {/* ✍️ Story Section */}
         <div className="relative overflow-hidden">
           <FloatingBackground />
-          <h3
+          <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 mt-10 leading-snug"
             style={{
               fontFamily: fonts.heading,
@@ -70,7 +69,7 @@ const YourStories = () => {
             }}
           >
             Write Your Baby's Story
-          </h3>
+          </h2>
           <p
             className="text-center text-lg font-medium max-w-6xl mx-auto mb-10"
             style={{ color: colors.purpledark }}

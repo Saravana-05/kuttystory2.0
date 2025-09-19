@@ -89,7 +89,8 @@ const StorySection: React.FC = () => {
             <div className="absolute w-full h-full backface-hidden">
               <img
                 src={babyFront}
-                alt="baby front"
+                  alt="Smiling newborn baby with storytelling album front cover"
+                  title="KuttyStory Baby Album Front Capture your newborn baby's journey now"
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>
@@ -98,7 +99,8 @@ const StorySection: React.FC = () => {
             <div className="absolute w-full h-full backface-hidden rotate-y-180">
               <img
                 src={babyBack}
-                alt="baby back"
+                 alt="Newborn Baby photography album "
+                 title="KuttyStory Baby Album Back Cover"
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>

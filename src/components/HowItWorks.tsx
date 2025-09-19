@@ -2,10 +2,9 @@ import React from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 import { motion } from "framer-motion";
-// ✅ Removed useHeartTrail import
+
 
 // ✅ Import all images manually
-
 import imgsubscribe from "/src/assets/images/subscribebaby.webp";
 import parentcam from "/src/assets/images/parentcam.webp";
 import image3 from "/src/assets/images/image3.webp";
@@ -192,20 +191,11 @@ const HowItWorks: React.FC = () => {
                     {step.title}
                   </h3>
                   <p
-                    className="text-base leading-relaxed mb-4"
+                    className="text-base leading-relaxed"
                     style={{ color: colors.blacks }}
                   >
                     {step.description}
                   </p>
-                  <div
-                    className="w-full h-2 rounded-full overflow-hidden"
-                    style={{ backgroundColor: colors.pinklight }}
-                  >
-                    <div
-                      className="h-full scale-x-75 group-hover:scale-x-100 transform origin-left transition-transform duration-1000"
-                      style={{ backgroundColor: colors.pinkdark }}
-                    ></div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -214,7 +204,7 @@ const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="flex justify-center items-center mt-12">
-          <Button to="/register">Start Your Magical Journey</Button>
+          <Button to="/register" title="Register with KuttyStory">Start Your Magical Journey</Button>
         </div>
       </div>
     </section>

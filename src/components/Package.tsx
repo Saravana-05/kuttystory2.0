@@ -3,6 +3,7 @@ import { Check, Star, Gift, Crown, Diamond } from "lucide-react";
 import { colors, fonts } from "../styles/Theme"; // Adjust path as needed
 import Button from "../styles/Button";
 import FloatingBackground from "../styles/FloatingBackground";
+
 import { motion } from "framer-motion";
 
 // import Sparkles from "../styles/sparkle";
@@ -37,8 +38,8 @@ const Package: React.FC = () => {
         "High Resolution Image Storage Upto 3 GB for 5 Years Validity",
         "No Album",
       ],
-      solidColor: colors.greys,
-      lightColor: colors.cream,
+      solidColor: colors.pinkdark,
+      lightColor: colors.white,
       popularBadge: false,
       tier: "starter",
     },
@@ -56,8 +57,8 @@ const Package: React.FC = () => {
         "12x10 Inches 60 Pages Album",
       ],
 
-      solidColor: colors.pinkdull,
-      lightColor: colors.pinkmedium,
+      solidColor: colors.pinkdark,
+      lightColor: colors.white,
       popularBadge: false,
       tier: "premium",
     },
@@ -65,7 +66,7 @@ const Package: React.FC = () => {
       name: "GOLD",
       icon: Crown,
       price: "₹18675",
-      originalPrice: "₹22000",
+      originalPrice: "₹22500",
       description:
         "One professional baby shoot plus your uploaded memories, all compiled into a high-quality photo album for your baby's first birthday.",
       features: [
@@ -75,7 +76,7 @@ const Package: React.FC = () => {
         "12x10 Inches 60 Pages Album",
       ],
       solidColor: colors.pinkdark,
-      lightColor: colors.pinkhome,
+      lightColor: colors.white,
       popularBadge: true,
       tier: "luxury",
     },
@@ -91,8 +92,8 @@ const Package: React.FC = () => {
         "Unlimited Memories with compressed images",
         "High Resolution Image Storage Upto 20 GB for 25 Years Validity",
       ],
-      solidColor: colors.pinkhome,
-      lightColor: colors.lightmauve,
+      solidColor: colors.pinkdark,
+      lightColor: colors.white,
       popularBadge: false,
       tier: "ultimate",
     },
@@ -115,16 +116,16 @@ const Package: React.FC = () => {
 
   const getTextColor = (tier: string) => {
     return tier === "luxury" || tier === "ultimate"
-      ? colors.cream
+      ? colors.blacks
       : colors.blacks;
   };
-  // ✅ Removed handleMouseMove hook
+
 
   return (
     <section
       id="package"
       className="py-12 relative overflow-hidden "
-      // ✅ Removed onMouseMove event handler
+
       style={{ backgroundColor: colors.pinkdull, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}
@@ -303,8 +304,9 @@ const Package: React.FC = () => {
                 precious memories!
               </p>
               <Button
-                href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages.
-"
+                href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages."
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Book Free Consultation
               </Button>

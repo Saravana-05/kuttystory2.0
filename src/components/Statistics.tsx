@@ -245,11 +245,6 @@ const Statistics: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* CTA Button */}
-        {/* <div className="text-center mt-12">
-          <Button variant="cta">Start Your Journey</Button>
-        </div> */}
       </div>
     </section>
   );

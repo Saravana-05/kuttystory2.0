@@ -132,6 +132,7 @@ const BabyStory: React.FC = () => {
                   <img
                     src={selectedImage}
                     alt="Baby Story Book Cover"
+                    title="Personalized Baby Story Book | Custom Photo Albums - KuttyStory"
                     decoding="async"
                     className={`w-full h-3/4 object-cover transition-all duration-300 ${
                       isTransitioning
@@ -250,7 +251,8 @@ const BabyStory: React.FC = () => {
                         ? "https://kuttystory.com/media/album/001_Kutty_Story_Front_Cover_transparent.png"
                         : bookFrames[0].img
                     }
-                    alt="Frame 1"
+                    alt="baby story book Frame 1"
+                    title="Personalized Baby Story Book | Custom Photo Albums - KuttyStory"
                     className="w-full h-16 object-cover rounded transition-all duration-300 hover:brightness-110"
                   />
                   <div className="flex-1 flex items-center justify-center">
@@ -285,7 +287,7 @@ const BabyStory: React.FC = () => {
                         ? "https://kuttystory.com/media/album/001_Kutty_Story_Front_Cover_transparent.png"
                         : bookFrames[1].img
                     }
-                    alt="Frame 2"
+                    alt="create baby story online Frame 2"
                     className="w-full h-16 object-cover rounded transition-all duration-300 hover:brightness-110"
                   />
                   <div className="flex-1 flex items-center justify-center">
@@ -320,7 +322,8 @@ const BabyStory: React.FC = () => {
                         ? "https://kuttystory.com/media/album/001_Kutty_Story_Front_Cover_transparent.png"
                         : bookFrames[2].img
                     }
-                    alt="Frame 3"
+                    alt="customized story book for kids Frame 3"
+                    title="baby memory book"
                     className="w-full h-16 object-cover rounded transition-all duration-300 hover:brightness-110"
                   />
                   <div className="flex-1 flex items-center justify-center">
@@ -355,7 +358,8 @@ const BabyStory: React.FC = () => {
                         ? "https://kuttystory.com/media/album/001_Kutty_Story_Front_Cover_transparent.png"
                         : bookFrames[3].img
                     }
-                    alt="Frame 4"
+                    alt="kutty story books Frame 4"
+                    title="personalized baby story book"
                     className="w-full h-16 object-cover rounded transition-all duration-300 hover:brightness-110"
                   />
                   <div className="flex-1 flex items-center justify-center">

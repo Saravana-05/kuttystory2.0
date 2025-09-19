@@ -70,6 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <img
                 src="/public/KuttyStory_logo_new.png"
                 alt="Kutty Story Logo"
+                title="best baby photostudio in chennai,dindigul,trichy"
                 className="h-10 w-auto"
               />
             </Link>
@@ -107,6 +108,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="mt-8 space-y-3">
             <Link
               to="/register"
+              title="Book your KuttyStory baby photography session"
               className="block w-full px-4 py-3 rounded-xl font-medium shadow-lg text-center transition-all duration-200 hover:scale-105 transform"
               style={{
                 backgroundColor: colors.pinkmedium,
@@ -117,6 +119,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </Link>
             <Link
               to="/login"
+              title="Login to your KuttyStory account to access your baby photography dashboard"
               className="block w-full px-4 py-3 rounded-xl font-medium shadow-lg text-center transition-all duration-200 hover:scale-105 transform"
               style={{
                 backgroundColor: colors.purpledark,

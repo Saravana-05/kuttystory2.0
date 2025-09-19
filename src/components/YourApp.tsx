@@ -41,6 +41,7 @@ const YourApp = () => {
                       <img
                         src="https://kuttystory.com/media/default/Web_Mobile.jpg"
                         alt="Kutty Story Platform"
+                        title="KuttyStory App Capture and share your baby's story digitally"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black opacity-20" />
@@ -61,7 +62,8 @@ const YourApp = () => {
                     >
                       <img
                         src="https://kuttystory.com/media/default/Web_Mobile.jpg"
-                        alt="Mobile App"
+                         alt="KuttyStory mobile app preview"
+                         title="KuttyStory Mobile App Schedule shoots, create albums, and store baby memories"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -76,7 +78,8 @@ const YourApp = () => {
                     >
                       <img
                         src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
-                        alt="Get it on Google Play"
+                        alt="Download KuttyStory App on Google Play Store"
+                        title="Get KuttyStory Baby Photography App from Google Play Store"
                         width="161"
                         style={{ border: 0 }}
                       />
