@@ -5,11 +5,10 @@ import Button from "../styles/Button";
 
 //import { useHeartTrail } from "../styles/HeartTrail";
 
-
+import { motion } from "framer-motion";
 
 const FAQs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
 
   const faqs = [
     {
@@ -44,7 +43,6 @@ const FAQs: React.FC = () => {
     <section
       id="faqs"
       className="py-20 px-4 relative"
-
       style={{ backgroundColor: colors.cream, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}
@@ -85,32 +83,37 @@ const FAQs: React.FC = () => {
                   style={{
                     backgroundColor: colors.lightpurple,
                     borderColor: colors.pinkmedium,
-                    clipPath: "polygon(8px 0, 48px 0, 56px 8px, calc(100% - 8px) 8px, 100% 16px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)",
-                    borderBottom: isOpen ? "none" : `1px solid ${colors.purpledark}`,
+                    clipPath:
+                      "polygon(8px 0, 48px 0, 56px 8px, calc(100% - 8px) 8px, 100% 16px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)",
+                    borderBottom: isOpen
+                      ? "none"
+                      : `1px solid ${colors.purpledark}`,
                     borderBottomLeftRadius: isOpen ? 0 : 12,
                     borderBottomRightRadius: isOpen ? 0 : 12,
                     borderTopLeftRadius: 12,
                     borderTopRightRadius: 12,
-                    minHeight: '120px', // Using inline style to ensure consistency
+                    minHeight: "120px", // Using inline style to ensure consistency
                   }}
                 >
                   <div className="flex justify-between items-center w-full">
                     <span
                       className="text-left flex-1 pr-4"
-                      style={{ 
+                      style={{
                         fontFamily: fonts.heading,
-                        fontSize: '1.25rem', // 20px equivalent to text-xl
-                        lineHeight: '1.6',
+                        fontSize: "1.25rem", // 20px equivalent to text-xl
+                        lineHeight: "1.6",
                       }}
                     >
                       {faq.question}
                     </span>
-                    <span 
+                    <span
                       className="leading-none select-none flex-shrink-0"
-                      style={{ fontSize: '1.875rem' }} // 30px equivalent to text-3xl
+                      style={{ fontSize: "1.875rem" }} // 30px equivalent to text-3xl
                     >
                       {isOpen ? (
-                        <span className="transform rotate-45 inline-block">+</span>
+                        <span className="transform rotate-45 inline-block">
+                          +
+                        </span>
                       ) : (
                         <span>+</span>
                       )}
@@ -123,16 +126,17 @@ const FAQs: React.FC = () => {
               <div
                 className="transition-all duration-500 overflow-hidden w-full"
                 style={{
-                  maxHeight: isOpen ? '180px' : '0px', // Fixed height based on second FAQ
+                  maxHeight: isOpen ? "180px" : "0px", // Fixed height based on second FAQ
                   opacity: isOpen ? 1 : 0,
                 }}
               >
                 <div
                   className="py-3 w-full"
-                  style={{ 
+                  style={{
                     backgroundColor: colors.pinkdark,
-                    height: '180px', // Fixed container height
-                    clipPath: "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)",
+                    height: "180px", // Fixed container height
+                    clipPath:
+                      "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)",
                   }}
                 >
                   <div
@@ -140,18 +144,18 @@ const FAQs: React.FC = () => {
                     style={{
                       backgroundColor: colors.whites,
                       borderColor: colors.blue,
-                      padding: '1.5rem 2rem',
-                      height: '132px', // Fixed height for answer card (180px - padding)
-                      display: 'flex',
-                      alignItems: 'flex-start',
+                      padding: "1.5rem 2rem",
+                      height: "132px", // Fixed height for answer card (180px - padding)
+                      display: "flex",
+                      alignItems: "flex-start",
                     }}
                   >
                     <p
                       style={{
                         color: colors.blacks,
                         fontFamily: fonts.body,
-                        fontSize: '1.125rem',
-                        lineHeight: '1.6',
+                        fontSize: "1.125rem",
+                        lineHeight: "1.6",
                         margin: 0,
                       }}
                     >

@@ -5,6 +5,7 @@ import { colors, fonts } from "../styles/Theme";
 import logo from "../assets/KuttyStory_logo.webp";
 import baby from "../assets/images/kuttystory.webp";
 import Button from "../styles/Button";
+import axios from "axios";
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,24 +18,43 @@ const Login: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login data:", formData);
+    try {
+      const res = await axios.post(
+        "https://kuttystory.com/API/api-token-auth/",
+        {
+          username: formData.email,
+          password: formData.password,
+        },
+        { withCredentials: true }
+      );
+
+      if (res.data.token) {
+        // store token in localStorage or context
+        localStorage.setItem("authToken", res.data.token);
+
+        // redirect to a frontend route that uses token
+        window.location.href = "notification/memory_view/"; // change to frontend route
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
   };
 
   return (
     <section style={{ fontFamily: fonts.body }} className="min-h-screen">
       {/* Top Navigation */}
-      <nav 
+      <nav
         className="w-full px-4 sm:px-6 lg:px-8 py-4 border-b"
-        style={{ 
+        style={{
           backgroundColor: colors.whites,
-          borderColor: `${colors.pinkmedium}30`
+          borderColor: `${colors.pinkmedium}30`,
         }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-50"
             style={{ color: colors.purpledark }}
           >
@@ -87,12 +107,18 @@ const Login: React.FC = () => {
                   >
                     LOGIN
                   </h1>
-                  <p className="text-sm sm:text-base" style={{ color: colors.lightmauve }}>
+                  <p
+                    className="text-sm sm:text-base"
+                    style={{ color: colors.lightmauve }}
+                  >
                     Welcome back to your story ✨
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-5 sm:space-y-6"
+                >
                   <input
                     type="email"
                     name="email"
@@ -172,7 +198,10 @@ const Login: React.FC = () => {
                   </div>
 
                   <div className="text-center pt-2">
-                    <span className="text-sm sm:text-base" style={{ color: colors.lightmauve }}>
+                    <span
+                      className="text-sm sm:text-base"
+                      style={{ color: colors.lightmauve }}
+                    >
                       Need an account?{" "}
                     </span>
                     <Link
@@ -219,7 +248,10 @@ const Login: React.FC = () => {
                 >
                   Welcome Back
                 </h2>
-                <p className="text-base sm:text-lg" style={{ color: colors.lightmauve }}>
+                <p
+                  className="text-base sm:text-lg"
+                  style={{ color: colors.lightmauve }}
+                >
                   Continue your beautiful journey with us ✨
                 </p>
               </div>
