@@ -48,12 +48,12 @@ const FAQs: React.FC = () => {
       {/* <Sparkles /> */}
 
       <div className="max-w-6xl mx-auto text-center mb-16">
-        <h4
+        <h2
           className="text-4xl md:text-5xl font-bold mb-4"
           style={{ color: colors.purpledark, fontFamily: fonts.heading }}
         >
           Frequently Asked Questions
-        </h4>
+        </h2>
         <p className="text-lg" style={{ color: colors.purpledark }}>
           Everything you need to know about our baby photography services.
         </p>

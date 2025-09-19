@@ -321,6 +321,7 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
                           <img
                             src="/KuttyStory_logo_new.png"
                             alt="Kutty Story"
+                            title="kuttystory Baby photoshop"
                             className="h-6 w-6"
                           />
                         </a>

@@ -86,7 +86,7 @@ const Package: React.FC = () => {
       price: "₹48470",
       originalPrice: "₹65500",
       description:
-        "Three baby photo shoots and your favorite memories combined into a premium album for your child’s first birthday.",
+        "Three baby photo shoots and your favorite memories combined into a premium album for your child's first birthday.",
       features: [
         "3 shoots for this pack",
         "Unlimited Memories with compressed images",
@@ -133,12 +133,12 @@ const Package: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h4
+          <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold font-monkey mb-6 leading-snug"
             style={{ color: colors.purpledark, fontFamily: fonts.heading }}
           >
             Package
-          </h4>
+          </h2>
           <p
             className="text-lg max-w-3xl mx-auto leading-relaxed font-medium"
             style={{ color: colors.purpledark }}
@@ -304,8 +304,9 @@ const Package: React.FC = () => {
                 precious memories!
               </p>
               <Button
-                href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages.
-"
+                href="https://wa.me/919841888001?text=Hi%20KuttyStory%2C%20I%20would%20like%20to%20know%20more%20about%20your%20baby%20photoshoot%20packages."
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Book Free Consultation
               </Button>

@@ -71,7 +71,7 @@ const Testimonials = () => {
       role: "Happy Mother",
       image: image7,
       rating: 5,
-      text: "From deciding the theme to end, totally it was awesome experience with kuttystory. They are so user friendly, had patience when shooting and done very good job on all ask with respect to customization. Thank you so much for capturing precious beautiful memories of our baby",
+      text: "From theme to finish, Kuttystory gave us an awesome experience so friendly, patient, and flexible with customization.Thank you for capturing our baby's precious memories beautifully!",
       category: "Children Photography",
       location: "Dindigul",
       icon: <Star className="h-6 w-6" />,
@@ -95,7 +95,18 @@ const Testimonials = () => {
 
     // Small delay to ensure content is rendered
     const timer = setTimeout(calculateMaxHeight, 100);
-    return () => clearTimeout(timer);
+    
+    // Recalculate on resize to handle responsive changes
+    const handleResize = () => {
+      setTimeout(calculateMaxHeight, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -158,7 +169,7 @@ const Testimonials = () => {
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h4
+          <h2
             className="text-4xl font-bold leading-snug"
             style={{ color: colors.purpledark, fontFamily: fonts.heading }}
           >
@@ -170,7 +181,7 @@ const Testimonials = () => {
               {" "}
               ❤
             </span>
-          </h4>
+          </h2>
           <p
             className="text-lg max-w-3xl mx-auto mt-4 font-medium"
             style={{ color: colors.purpledark }}
@@ -180,21 +191,20 @@ const Testimonials = () => {
         </div>
 
         {/* Hidden cards for height calculation */}
-        <div className="invisible absolute -z-10 pointer-events-none">
+        <div className="invisible absolute -z-10 pointer-events-none max-w-6xl mx-auto px-4">
           {testimonials.map((testimonial, index) => (
             <div
               key={`calc-${index}`}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 mb-4"
-              style={{ width: '100%', maxWidth: '1152px' }} // Match container width
+              className="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 mb-4 flex flex-col"
             >
               <div className="h-2 w-full mb-6 rounded-full" />
-              <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex flex-col md:flex-row items-center gap-8 flex-1 justify-center">
                 <div className="flex-shrink-0">
                   <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-xl" />
                 </div>
-                <div className="text-center md:text-left flex-1">
-                  <div className="w-6 h-6 mb-4" />
+                <div className="text-center md:text-left flex-1 flex flex-col justify-center">
+                  <div className="w-6 h-6 mb-4 mx-auto md:mx-0" />
                   <p className="italic text-gray-700 text-base sm:text-lg mb-6">
                     "{testimonial.text}"
                   </p>
@@ -204,7 +214,7 @@ const Testimonials = () => {
                   <p className="text-sm text-gray-600 mb-2">{testimonial.role}</p>
                   <div className="flex justify-center md:justify-start">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4" />
+                      <div key={i} className="h-4 w-4" />
                     ))}
                   </div>
                 </div>
@@ -221,7 +231,7 @@ const Testimonials = () => {
           viewport={{ once: false, amount: 0.3 }}
           className="relative bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12 transition-all duration-300 flex flex-col"
           style={{
-            minHeight: maxHeight > 0 ? `${maxHeight}px` : 'auto',
+            height: maxHeight > 0 ? `${maxHeight}px` : 'auto',
           }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}

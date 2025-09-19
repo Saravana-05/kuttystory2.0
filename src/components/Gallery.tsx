@@ -103,6 +103,7 @@ const Gallery = () => {
           <img
             src={image.url}
             alt={image.alt}
+            title="kuttystory theme based baby photostudio"
             loading="lazy"
             onLoad={handleImageLoad}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -151,12 +152,12 @@ const Gallery = () => {
         <div className="pb-1 pt-8 sm:pb-12 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h4
+              <h2
                 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 mt-0 leading-snug"
                 style={{ color: colors.purpledark, fontFamily: fonts.heading }}
               >
                 Gallery
-              </h4>
+              </h2>
               <p
                 className="text-lg max-w-3xl mx-auto font-medium"
                 style={{ color: colors.purpledark }}

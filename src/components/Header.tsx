@@ -26,8 +26,6 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
     ALBUM: "/src/assets/audio/sol.mp3",
     GALLERY: "/src/assets/audio/mi.mp3",
     PACKAGE: "/src/assets/audio/fa.mp3",
-    FAQS: "/src/assets/audio/la.mp3",
-    BLOG: "/src/assets/audio/mi.mp3",
     BRANCH: "/src/assets/audio/si.mp3",
     STUDIO: "/src/assets/audio/re2.mp3",
   };
@@ -40,14 +38,14 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
     });
   }, );
 
-  const navigationItems = [
-    { name: "HOME", hash: "#home" },
-    { name: "HOW IT WORKS", hash: "#how-it-works" },
-    { name: "ALBUM", hash: "#album" },
-    { name: "GALLERY", hash: "#gallery" },
-    { name: "PACKAGE", hash: "#package" },
-    { name: "BRANCH", hash: "#" },
-    { name: "STUDIO", href: "https://store.kuttystory.com/user/login" },
+   const navigationItems = [
+    { name: "HOME", hash: "#home", title: "KuttyStory Baby Photography Home" },
+    { name: "HOW IT WORKS", hash: "#how-it-works", title: "How KuttyStory Works" },
+    { name: "ALBUM", hash: "#album", title: "Baby Story Book Albums" },
+    { name: "GALLERY", hash: "#gallery", title: "KuttyStory Baby Photo Gallery" },
+    { name: "PACKAGE", hash: "#package", title: "Photography Packages & Pricing" },
+    { name: "BRANCH", hash: "#branch", title: "Find KuttyStory Branches" },
+    { name: "STUDIO", href: "https://store.kuttystory.com/user/login", title: "KuttyStory Studio Online" },
   ];
 
   const handleMenuToggle = () => {
@@ -134,6 +132,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
             <img
               src={Logo}
               alt="Kutty Story Logo"
+              title="KuttyStory | Personalized Baby Story Books & Albums"
               className="h-16 sm:h-20 w-auto drop-shadow-lg z-10"
             />
           </Link>
@@ -331,7 +330,6 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                   e.currentTarget.style.backgroundColor = colors.pinkdark;
                   e.currentTarget.style.color = colors.purpledark;
                 }}
-                aria-label="Close branch selection"
               >
                 ✕ Close
               </button>
@@ -372,7 +370,6 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                 e.currentTarget.style.backgroundColor = colors.pinkdark;
                 e.currentTarget.style.color = colors.purpledark;
               }}
-              aria-label="Close sidebar menu"
             >
               <X className="w-5 h-5"  aria-hidden="true"/>
             </button>

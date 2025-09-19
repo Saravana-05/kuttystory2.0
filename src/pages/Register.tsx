@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, RefreshCw, ArrowLeft } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
-import logo from "../assets/KuttyStory_logo.png";
+import logo from "../assets/KuttyStory_logo.webp";
 import Button from "../styles/Button";
 import baby from "../assets/images/registerimage.webp";
 

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
-import logo from "../assets/KuttyStory_logo.png";
-import baby from "../assets/images/kuttystory.jpg";
+import logo from "../assets/KuttyStory_logo.webp";
+import baby from "../assets/images/kuttystory.webp";
 import Button from "../styles/Button";
 
 const Login: React.FC = () => {
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
             <img
               src={logo}
               alt="Kutty Story Logo"
-              title="Meet the Team Behind Kuttystory photography"
+              title="Meet the Team Behind Kuttystory Baby photography"
               className="h-8 sm:h-10 w-auto"
             />
           </Link>
@@ -205,7 +205,7 @@ const Login: React.FC = () => {
                   <img
                     src={baby}
                     alt="Family photography illustration"
-                    title="baby photography Chennai, Dindigul"
+                    title="baby photography Chennai, Dindigul,trichy"
                     className="w-full h-full object-cover rounded-full border-4 sm:border-8 shadow-xl"
                     style={{ borderColor: colors.cream }}
                   />

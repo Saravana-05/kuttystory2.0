@@ -154,7 +154,7 @@ const Statistics: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h4
+          <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-snug"
             style={{ color: colors.purpledark, fontFamily: fonts.heading }}
           >
@@ -165,7 +165,7 @@ const Statistics: React.FC = () => {
             >
               {" "}
             </span>
-          </h4>
+          </h2>
           <p
             className="text-lg max-w-3xl mx-auto font-medium"
             style={{ color: colors.purpledark }}
@@ -245,11 +245,6 @@ const Statistics: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* CTA Button */}
-        {/* <div className="text-center mt-12">
-          <Button variant="cta">Start Your Journey</Button>
-        </div> */}
       </div>
     </section>
   );

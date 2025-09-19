@@ -97,15 +97,15 @@ const Studio: React.FC = () => {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="/src/assets/images/babypink.jpg"
-                alt="kuttystory Studio setup "
+                src="/src/assets/images/babypink.webp"
+                alt="kuttystory Studio setup in chennai,dindigul,trichy "
                 title="Capture Timeless Baby Moments with Kuttystory"
                 className="rounded-2xl shadow-lg border-4 hover:scale-105 transform transition-all duration-300"
                 style={{ borderColor: "#f999b7" }}
               />
               <img
-                src="src/assets/images//babycenter.jpg"
-                alt=" kuttystory Baby photography"
+                src="src/assets/images//babycenter.webp"
+                alt=" kuttystory Baby photography in chennai,dindigul,trichy"
                 title="Create Custom Baby Memory Books Online"
                 className="rounded-2xl shadow-lg mt-8 border-4 hover:scale-105 transform transition-all duration-300"
                 style={{ borderColor: "#3f0968" }}

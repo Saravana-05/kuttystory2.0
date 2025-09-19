@@ -32,12 +32,12 @@ const StorySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col md:flex-row items-center gap-12 relative z-10">
         {/* ── Left Content ── */}
         <div className="md:w-1/2 text-left pr-6">
-          <h4
+          <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-snug"
             style={{ color: colors.purpledark, fontFamily: fonts.heading }}
           >
             A Story That Should Be Told
-          </h4>
+          </h2>
           <p
             className="text-base sm:text-lg leading-relaxed text-justify"
             style={{ color: colors.mauve }}
@@ -89,7 +89,8 @@ const StorySection: React.FC = () => {
             <div className="absolute w-full h-full backface-hidden">
               <img
                 src={babyFront}
-                alt="baby front"
+                  alt="Smiling newborn baby with storytelling album front cover"
+                  title="KuttyStory Baby Album Front Capture your newborn baby's journey now"
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>
@@ -98,7 +99,8 @@ const StorySection: React.FC = () => {
             <div className="absolute w-full h-full backface-hidden rotate-y-180">
               <img
                 src={babyBack}
-                alt="baby back"
+                 alt="Newborn Baby photography album "
+                 title="KuttyStory Baby Album Back Cover"
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>

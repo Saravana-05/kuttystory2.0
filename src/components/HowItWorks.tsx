@@ -3,9 +3,7 @@ import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 import { motion } from "framer-motion";
 // ✅ Removed useHeartTrail import
-
 // ✅ Import all images manually
-
 import imgsubscribe from "/src/assets/images/subscribebaby.webp";
 import parentcam from "/src/assets/images/parentcam.webp";
 import image3 from "/src/assets/images/image3.webp";
@@ -68,7 +66,7 @@ const HowItWorks: React.FC = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h4
+          <h2
             className="text-4xl md:text-5xl font-bold mb-6 mt-10 leading-snug"
             style={{
               color: colors.purpledark,
@@ -76,7 +74,7 @@ const HowItWorks: React.FC = () => {
             }}
           >
             How It Works
-          </h4>
+          </h2>
           <p
             className="text-lg  max-w-3xl mx-auto leading-relaxed px-4 font-medium"
             style={{ color: colors.purpledark }}
@@ -205,7 +203,7 @@ const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="flex justify-center items-center mt-12">
-          <Button to="/register">Start Your Magical Journey</Button>
+          <Button to="/register" title="Register with KuttyStory">Start Your Magical Journey</Button>
         </div>
       </div>
     </section>

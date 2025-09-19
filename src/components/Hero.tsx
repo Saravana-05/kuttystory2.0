@@ -4,10 +4,10 @@ import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 
 // 📸 Import Hero Images
-import babyRed from "../assets/images/bluebaby.jpg";
-import babyPink from "../assets/images/babyheader.jpg";
-import babyMurugan from "../assets/images/murganbaby.jpg";
-import babyKrish from "../assets/images/little_krishna.jpg"
+import babyRed from "../assets/images/bluebaby.webp";
+import babyPink from "../assets/images/babyheader.webp";
+import babyMurugan from "../assets/images/murganbaby.webp";
+import babyKrish from "../assets/images/little_krishna.webp"
 
 const heroImages = [
   {
@@ -15,24 +15,32 @@ const heroImages = [
     caption: "Sunshine in Tiny Toes",
     subtext:
       "In the gentle embrace of dreams, he rests with innocence, a tiny heart glowing beside his furry friend.",
+    alt: "Baby boy in blue with tiny toes and soft dreams",
+    title: "Sunshine in Tiny Toes - KuttyStory Baby Photography",
   },
   {
     url: babyPink,
     caption: "The Look That Stays Forever",
     subtext:
       "In her soft eyes, she gazes into your soul — a moment you'll hold forever.",
+    alt: "Baby girl in pink gazing softly with innocent eyes",
+    title: "The Look That Stays Forever - KuttyStory Baby Portrait",
   },
   {
     url: babyMurugan,
     caption: "Divine in Every Detail",
     subtext:
       "Draped in Murugan's charm, every smile feels sacred, every pose a blessing.",
+    alt: "Baby dressed as Lord Murugan with divine charm",
+    title: "Divine in Every Detail - KuttyStory Themed Baby Shoot",
   },
   {
     url: babyKrish,
     caption: "A Giggle from the Gods",
     subtext:
       "With a feathered crown and playful grin, he dances into your memories forever.",
+    alt: "Baby dressed as Little Krishna with a playful smile",
+    title: "A Giggle from the Gods - KuttyStory Krishna Baby Shoot",
   },
 ];
 
@@ -140,6 +148,7 @@ const Hero: React.FC = () => {
           key={index}
           src={image.url}
           alt={image.caption}
+          title={image.title}
           className={`absolute inset-0 w-full h-full object-cover ${
             index === currentIndex ? "opacity-100 z-0" : "opacity-0"
           }`}
@@ -198,6 +207,7 @@ const Hero: React.FC = () => {
           <div className="pt-2 sm:pt-3">
             <Button
               to="/Register"
+              title="Book your KuttyStory baby photography session"
               className="inline-flex items-center px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
             >
               Book Your Session
@@ -210,6 +220,7 @@ const Hero: React.FC = () => {
       {/* Prev Button - Improved mobile positioning */}
       <button
         aria-label="Previous Slide"
+        title="Previous baby photo"
         onClick={() =>
           handleManualChange(
             (currentIndex - 1 + heroImages.length) % heroImages.length
@@ -230,6 +241,7 @@ const Hero: React.FC = () => {
       {/* Next Button - Improved mobile positioning */}
       <button
         aria-label="Next Slide"
+         title="Next baby photo"
         onClick={() =>
           handleManualChange((currentIndex + 1) % heroImages.length)
         }
@@ -271,11 +283,13 @@ const Hero: React.FC = () => {
           href="https://play.google.com/store/apps/details?id=com.skylimit.kuttystory"
           target="_blank"
           rel="noopener noreferrer"
+          title="Download KuttyStory app on Google Play"
           className="block"
         >
           <img
             src="https://news.files.bbci.co.uk/include/newsspec/19854/assets/app-project-assets/google_play_store.svg"
-            alt="Get it on Google Play"
+            alt="Get KuttyStory app on Google Play"
+            title="KuttyStory App - Google Play Store"
 
             className="w-[100px] sm:w-[130px] md:w-[150px] lg:w-[161px] transition-transform duration-200 hover:scale-105"
             loading="lazy"

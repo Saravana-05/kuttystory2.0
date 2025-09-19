@@ -21,7 +21,7 @@ const colors = {
 };
 
 const fonts = {
-  heading: "Work Sans Extralight', cursive",
+  heading: "'Work Sans Extralight', cursive",
   body: "'Work Sans'",
 };
 

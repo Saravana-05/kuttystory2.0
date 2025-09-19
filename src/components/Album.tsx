@@ -105,7 +105,7 @@ const Album = () => {
                     >
                       <img
                         src={images[currentImageIndex]}
-                        alt={`Baby Story Book ${currentImageIndex + 1}`}
+                        alt={`Baby Story album ${currentImageIndex + 1}`}
                         className="w-full h-full object-contain transition-all duration-500 bg-white"
                         style={{
                           imageRendering: "crisp-edges",
