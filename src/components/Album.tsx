@@ -3,9 +3,9 @@ import { BookOpen, Heart, Star } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 import Sparkles from "../styles/sparkle";
-import kuttystoryone from "../assets/images/001_Kutty_Story_Front_Cover_transparent.png";
-import kuttystorytwo from "../assets/images/002_Kutty_Story_Inside.png";
-import kuttystorythree from "../assets/images/003_Kutty_Story_Cover_bothSides.png";
+import kuttystoryone from "../assets/images/001_Kutty_Story_Front_Cover_transparent.webp";
+import kuttystorytwo from "../assets/images/002_Kutty_Story_Inside.webp";
+import kuttystorythree from "../assets/images/003_Kutty_Story_Cover_bothSides.webp";
 import pageTurnMp3 from "../assets/audio/pageTurn.mp3";
 
 const Album = () => {
