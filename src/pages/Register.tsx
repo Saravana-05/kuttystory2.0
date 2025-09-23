@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, RefreshCw, ArrowLeft } from "lucide-react";
 import { colors, fonts } from "../styles/Theme";
 import logo from "../assets/KuttyStory_logo.webp";
 import Button from "../styles/Button";
 import baby from "../assets/images/registerimage.webp";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 type FormField = "name" | "email" | "phone";
 
@@ -18,6 +20,7 @@ interface FormData {
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -30,24 +33,57 @@ const Register: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Registration data:", formData);
+
+    try {
+      const data = {
+        username: formData?.name,
+        email: formData?.email,
+        phonenumber: formData?.phone,
+        password: formData?.password,
+        password2: formData?.confirmPassword,
+      };
+
+      const myData = new FormData();
+      myData.append("username", data.username);
+      myData.append("email", data.email);
+      myData.append("phonenumber", data.phonenumber);
+      myData.append("password", data.password);
+      myData.append("password2", data.password2);
+      toast.loading("Registering...");
+      await axios.post("https://kuttystory.com/API/reg/", myData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+        },
+      });
+      toast.dismiss();
+      toast.success("Registration successful!");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+    } catch (error) {
+      console.error("Error registering:", error);
+      toast.dismiss();
+      toast.error("Registration failed!");
+    }
   };
 
   return (
     <section style={{ fontFamily: fonts.body }} className="min-h-screen">
       {/* Top Navigation */}
-      <nav 
+      <Toaster />
+      <nav
         className="w-full px-4 sm:px-6 lg:px-8 py-4 border-b"
-        style={{ 
+        style={{
           backgroundColor: colors.whites,
-          borderColor: `${colors.pinkmedium}30`
+          borderColor: `${colors.pinkmedium}30`,
         }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-50"
             style={{ color: colors.purpledark }}
           >
@@ -92,12 +128,18 @@ const Register: React.FC = () => {
                   >
                     Create Your Account
                   </h1>
-                  <p className="text-sm sm:text-base" style={{ color: colors.purpledark }}>
+                  <p
+                    className="text-sm sm:text-base"
+                    style={{ color: colors.purpledark }}
+                  >
                     Begin your journey of preserving beautiful memories ✨
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-5 sm:space-y-6"
+                >
                   {(["name", "email", "phone"] as FormField[]).map((field) => (
                     <input
                       key={field}
@@ -167,7 +209,10 @@ const Register: React.FC = () => {
                     required
                   />
 
-                  <div className="text-xs sm:text-sm" style={{ color: colors.purpledark }}>
+                  <div
+                    className="text-xs sm:text-sm"
+                    style={{ color: colors.purpledark }}
+                  >
                     *Use at least 8 characters, with 1 special (&@#) and 1
                     number (0–9)
                   </div>
@@ -241,7 +286,10 @@ const Register: React.FC = () => {
 
                   {/* Redirect to Login */}
                   <div className="text-center pt-2">
-                    <span className="text-sm sm:text-base" style={{ color: colors.purpledark }}>
+                    <span
+                      className="text-sm sm:text-base"
+                      style={{ color: colors.purpledark }}
+                    >
                       Already have an account?{" "}
                     </span>
                     <Link
@@ -285,7 +333,10 @@ const Register: React.FC = () => {
                 >
                   Join the KuttyStory Family
                 </h2>
-                <p className="text-base sm:text-lg" style={{ color: colors.purpledark }}>
+                <p
+                  className="text-base sm:text-lg"
+                  style={{ color: colors.purpledark }}
+                >
                   Begin capturing unforgettable moments today ✨
                 </p>
               </div>
