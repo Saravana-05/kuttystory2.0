@@ -163,6 +163,7 @@ const Footer: React.FC<FooterProps> = ({ selectedBranch }) => {
         .icon-marquee:hover {
           animation-play-state: paused;
           cursor: pointer;
+
       }
 
         } 

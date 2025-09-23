@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
 // import Sparkles from "../styles/sparkle";
+
 //import { useHeartTrail } from "../styles/HeartTrail";
-import { motion } from "framer-motion";
+
+
 
 const FAQs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  //const handleMouseMove = useHeartTrail();
+
 
   const faqs = [
     {
@@ -42,7 +44,7 @@ const FAQs: React.FC = () => {
     <section
       id="faqs"
       className="py-20 px-4 relative"
-      //onMouseMove={handleMouseMove}
+
       style={{ backgroundColor: colors.cream, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}

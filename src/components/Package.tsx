@@ -3,7 +3,7 @@ import { Check, Star, Gift, Crown, Diamond } from "lucide-react";
 import { colors, fonts } from "../styles/Theme"; // Adjust path as needed
 import Button from "../styles/Button";
 import FloatingBackground from "../styles/FloatingBackground";
-//import { useHeartTrail } from "../styles/HeartTrail";
+
 import { motion } from "framer-motion";
 
 // import Sparkles from "../styles/sparkle";
@@ -119,13 +119,13 @@ const Package: React.FC = () => {
       ? colors.blacks
       : colors.blacks;
   };
-  //const handleMouseMove = useHeartTrail();
+
 
   return (
     <section
       id="package"
       className="py-12 relative overflow-hidden "
-     // onMouseMove={handleMouseMove} // ✅ hooked up
+
       style={{ backgroundColor: colors.pinkdull, fontFamily: fonts.body }}
     >
       {/* <Sparkles /> */}
