@@ -27,7 +27,10 @@ const Login: React.FC = () => {
           username: formData.email,
           password: formData.password,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
       );
 
       if (res.data.token) {
@@ -35,7 +38,8 @@ const Login: React.FC = () => {
         localStorage.setItem("authToken", res.data.token);
 
         // redirect to a frontend route that uses token
-        window.location.href = "notification/memory_view/"; // change to frontend route
+        // window.location.href = "notification/memory_view/"; // change to frontend route
+        window.location.replace("notification/memory_view/");
       }
     } catch (error) {
       console.error("Error logging in:", error);
