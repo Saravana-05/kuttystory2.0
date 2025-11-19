@@ -8,11 +8,19 @@
   <title>Kuttystory - Baby photography Studio</title>
   <meta name="description"
     content="One-stop space for newborn photography, baby journals & birth stories—preserve your little one’s sweetest memories in a creative way forever." />
-  
-  <!-- ✅ Canonical URL -->
-  <link rel="canonical" href="https://kuttystory.com/" />
-</head>
-   <!-- Meta Pixel Code -->
+    
+  <meta name="google-site-verification" content="FQsBontexWZISmDlI2cRS71U9GoB8GUDNv_P0HvXTDI" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-13Y8R8HK8F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-13Y8R8HK8F');
+</script>
+
+  <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -25,10 +33,13 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '467778026028712');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=467778026028712&ev=PageView&noscript=1"
-/></noscript>
+
 <!-- End Meta Pixel Code -->
+
+  <!-- ✅ Canonical URL -->
+  <link rel="canonical" href="https://kuttystory.com/" />
+</head>
+
   <!-- ✅ Preconnect for faster font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,17 +61,20 @@ src="https://www.facebook.com/tr?id=467778026028712&ev=PageView&noscript=1"
 
   <!-- ✅ Preload above-the-fold hero images (high LCP impact) -->
 
-
   <link rel="preload" as="image" href="/src/assets/images/bluebaby.webp" fetchpriority="high" />
   <link rel="preload" as="image" href="/src/assets/images/babyheader.webp" fetchpriority="high" />
   <link rel="preload" as="image" href="/src/assets/images/murganbaby.webp" fetchpriority="high" />
   <link rel="preload" as="image" href="/src/assets/images/little_krishna.webp" fetchpriority="high" />
 
-
 </head>
 
 <body>
   <div id="root"></div>
+  <!--NO script for meta pixel code-->
+  <noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=467778026028712&ev=PageView&noscript=1"
+/></noscript>
+<!--End NO script for meta pixel code-->
 
   <!-- ✅ Defer JS so it doesn't block rendering -->
   <script type="module" src="/src/main.tsx" defer></script>
