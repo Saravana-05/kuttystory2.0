@@ -38,16 +38,16 @@ const Register: React.FC = () => {
   return (
     <section style={{ fontFamily: fonts.body }} className="min-h-screen">
       {/* Top Navigation */}
-      <nav 
+      <nav
         className="w-full px-4 sm:px-6 lg:px-8 py-4 border-b"
-        style={{ 
+        style={{
           backgroundColor: colors.whites,
           borderColor: `${colors.pinkmedium}30`
         }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-50"
             style={{ color: colors.purpledark }}
           >
@@ -105,13 +105,12 @@ const Register: React.FC = () => {
                         field === "email"
                           ? "email"
                           : field === "phone"
-                          ? "tel"
-                          : "text"
+                            ? "tel"
+                            : "text"
                       }
                       name={field}
-                      placeholder={`${
-                        field[0].toUpperCase() + field.slice(1)
-                      }*`}
+                      placeholder={`${field[0].toUpperCase() + field.slice(1)
+                        }*`}
                       value={formData[field]}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-xl border-2 outline-none transition-all duration-200 focus:border-opacity-80"
@@ -234,9 +233,15 @@ const Register: React.FC = () => {
 
                   {/* Submit Button */}
                   <div className="text-center pt-4">
-                    <Button type="submit" variant="cta">
-                      Sign Up
-                    </Button>
+                    <a
+                      href="https://kuttystory.com/API/reg/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="cta">
+                        Sign Up
+                      </Button>
+                    </a>
                   </div>
 
                   {/* Redirect to Login */}
@@ -245,7 +250,7 @@ const Register: React.FC = () => {
                       Already have an account?{" "}
                     </span>
                     <Link
-                      to="/login"
+                      to="/https://kuttystory.com/userapp/login/"
                       className="font-semibold text-sm sm:text-base underline decoration-2 underline-offset-2 transition-colors duration-200 hover:opacity-80"
                       style={{ color: colors.purpledark }}
                     >

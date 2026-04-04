@@ -127,9 +127,8 @@ const HowItWorks: React.FC = () => {
 
             {/* Step Row */}
             <div
-              className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
             >
               {/* Image + Number + Emoji */}
               <div className="flex-shrink-0 relative group">
@@ -204,7 +203,14 @@ const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="flex justify-center items-center mt-12">
-          <Button to="/register" title="Register with KuttyStory">Start Your Magical Journey</Button>
+          <Button
+            href="https://kuttystory.com/API/reg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Register with KuttyStory"
+          >
+            Start Your Magical Journey
+          </Button>
         </div>
       </div>
     </section>

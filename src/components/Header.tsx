@@ -36,9 +36,9 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
       audio.preload = "auto";
       audio.load();
     });
-  }, );
+  },);
 
-   const navigationItems = [
+  const navigationItems = [
     { name: "HOME", hash: "#home", title: "KuttyStory Baby Photography Home" },
     { name: "HOW IT WORKS", hash: "#how-it-works", title: "How KuttyStory Works" },
     { name: "ALBUM", hash: "#album", title: "Baby Story Book Albums" },
@@ -70,12 +70,12 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
     setShowBranchModal(false);
     setShowMobileBranchDropdown(false);
     setIsMenuOpen(false);
-    
+
     // Scroll to footer section
     setTimeout(() => {
       const footerElement = document.querySelector('footer');
       if (footerElement) {
-        footerElement.scrollIntoView({ 
+        footerElement.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
@@ -148,9 +148,8 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                     onClick={() => {
                       setShowBranchModal((prev) => !prev);
                     }}
-                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
-                      index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
-                    }`}
+                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
+                      }`}
                     style={{
                       backgroundColor: colors.pinkdark,
                       color: colors.purpledark,
@@ -173,9 +172,8 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                   <Link
                     key={item.name}
                     to={item.hash}
-                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
-                      index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
-                    }`}
+                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
+                      }`}
                     style={{
                       backgroundColor: colors.pinkdark,
                       color: colors.purpledark,
@@ -199,9 +197,8 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${
-                      index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
-                    }`}
+                    className={`px-4 py-1.5 text-sm font-semibold rounded-full shadow-md border backdrop-blur-sm transition-all duration-200 hover:scale-105 z-10 hover-wiggle ${index % 2 === 0 ? "rotate-[1.5deg]" : "-rotate-[1.5deg]"
+                      }`}
                     style={{
                       backgroundColor: colors.pinkdark,
                       color: colors.purpledark,
@@ -227,8 +224,12 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/register"
+
+            {/* SIGN UP */}
+            <a
+              href="https://kuttystory.com/API/reg/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2 text-white rounded-full shadow-md transition duration-200 text-sm font-medium hover:scale-105"
               style={{ backgroundColor: colors.purpledark }}
               onMouseEnter={(e) =>
@@ -239,9 +240,13 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
               }
             >
               SIGN&nbsp;UP
-            </Link>
-            <Link
-              to="/login"
+            </a>
+
+            {/* LOGIN */}
+            <a
+              href="https://kuttystory.com/userapp/login/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2 text-white rounded-full shadow-md transition duration-200 text-sm font-medium hover:scale-105"
               style={{ backgroundColor: colors.purpledark }}
               onMouseEnter={(e) =>
@@ -252,7 +257,8 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
               }
             >
               LOGIN
-            </Link>
+            </a>
+
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -269,9 +275,9 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6" aria-hidden="true"/>
+              <X className="h-6 w-6" aria-hidden="true" />
             ) : (
-              <Menu className="h-6 w-6" aria-hidden="true"/>
+              <Menu className="h-6 w-6" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -281,7 +287,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
           <div
             ref={branchModalRef}
             className="absolute top-[6.5rem] left-1/2 transform -translate-x-1/2 z-50 border shadow-xl rounded-lg p-2 min-w-[150px]"
-            style={{ 
+            style={{
               backgroundColor: colors.pinkdull,
               borderColor: colors.pinkmedium,
               boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)'
@@ -311,12 +317,12 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                   {branch}
                 </button>
               ))}
-              
+
               {/* Close button */}
               <button
                 onClick={() => setShowBranchModal(false)}
                 className="text-sm font-semibold px-4 py-2 text-center rounded-lg transition duration-200 hover:scale-105 mt-1"
-                 aria-label="Close branch modal"
+                aria-label="Close branch modal"
                 style={{
                   backgroundColor: colors.pinkdark,
                   color: colors.purpledark,
@@ -342,9 +348,8 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
       {isHomePage && (
         <div
           ref={sidebarRef}
-          className={`fixed top-0 right-0 h-full w-64 max-w-[75vw] z-40 transform transition-transform duration-300 ease-in-out md:hidden shadow-lg border-l rounded-l-2xl pt-24 px-4 pb-6 bg-opacity-95 ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed top-0 right-0 h-full w-64 max-w-[75vw] z-40 transform transition-transform duration-300 ease-in-out md:hidden shadow-lg border-l rounded-l-2xl pt-24 px-4 pb-6 bg-opacity-95 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
           style={{
             backgroundColor: colors.pinkdull,
             borderColor: colors.pinkmedium,
@@ -356,7 +361,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
             <button
               onClick={() => setIsMenuOpen(false)}
               className="p-2 rounded-full transition duration-200"
-               aria-label="Close menu"
+              aria-label="Close menu"
               style={{
                 backgroundColor: colors.pinkdark,
                 color: colors.purpledark,
@@ -371,7 +376,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                 e.currentTarget.style.color = colors.purpledark;
               }}
             >
-              <X className="w-5 h-5"  aria-hidden="true"/>
+              <X className="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
 
@@ -396,7 +401,7 @@ const Header: React.FC<HeaderProps> = ({ onSidebarToggle, onBranchSelect }) => {
                       e.currentTarget.style.color = colors.mauve;
                     }}
                     aria-label="Toggle branch selection"
-                     aria-expanded={showMobileBranchDropdown}
+                    aria-expanded={showMobileBranchDropdown}
                   >
                     BRANCH
                   </button>

@@ -146,9 +146,8 @@ const Hero: React.FC = () => {
           src={image.url}
           alt={image.caption}
           title={image.title}
-          className={`absolute inset-0 w-full h-full object-cover ${
-            index === currentIndex ? "opacity-100 z-0" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover ${index === currentIndex ? "opacity-100 z-0" : "opacity-0"
+            }`}
           loading={index === 0 ? "eager" : "lazy"}
           fetchPriority={index === 0 ? "high" : "auto"}
           onLoad={index === 0 ? handleFirstImageLoad : undefined}
@@ -202,7 +201,9 @@ const Hero: React.FC = () => {
           {/* CTA Button */}
           <div className="pt-2 sm:pt-3">
             <Button
-              to="/Register"
+              href="https://kuttystory.com/API/reg/"
+              target="_blank"
+              rel="noopener noreferrer"
               title="Book your KuttyStory baby photography session"
               className="inline-flex items-center px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg rounded-full font-medium shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
             >
@@ -237,7 +238,7 @@ const Hero: React.FC = () => {
       {/* Next Button - Improved mobile positioning */}
       <button
         aria-label="Next Slide"
-         title="Next baby photo"
+        title="Next baby photo"
         onClick={() =>
           handleManualChange((currentIndex + 1) % heroImages.length)
         }
@@ -263,11 +264,10 @@ const Hero: React.FC = () => {
             className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-200"
           >
             <span
-              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 ${
-                index === currentIndex
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 ${index === currentIndex
                   ? "bg-[#fb9ca6] scale-125"
                   : "bg-[#ffcbcb]/80 hover:bg-[#fb9ca6]/80 hover:scale-110"
-              }`}
+                }`}
             />
           </button>
         ))}

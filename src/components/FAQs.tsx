@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { colors, fonts } from "../styles/Theme";
 import Button from "../styles/Button";
+import { motion } from "framer-motion";
 // import Sparkles from "../styles/sparkle";
 
 //import { useHeartTrail } from "../styles/HeartTrail";
